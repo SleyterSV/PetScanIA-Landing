@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PetScanIA 2.0 - Próximamente</title>
+    <style>
+        /* Estilos base con estética Tech/Cyberpunk */
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #050505;
+            color: #ffffff;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            overflow: hidden;
+            background: radial-gradient(circle at center, #1a1a2e 0%, #000000 100%);
+        }
+
+        /* Efecto de luz de fondo (Neon glow) */
+        .glow {
+            position: absolute;
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(0, 255, 255, 0.1) 0%, rgba(128, 0, 128, 0.05) 50%, transparent 70%);
+            z-index: 0;
+        }
+
+        .container {
+            z-index: 1;
+            text-align: center;
+            max-width: 800px;
+            padding: 20px;
+        }
+
+        h1 {
+            font-size: 3.5rem;
+            margin-bottom: 10px;
+            background: -webkit-linear-gradient(45deg, #00ffff, #bf00ff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        p {
+            font-size: 1.2rem;
+            color: #cccccc;
+            margin-bottom: 40px;
+        }
+
+        /* Estilos del Contador */
+        .countdown {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-bottom: 50px;
+        }
+
+        .time-box {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(0, 255, 255, 0.3);
+            padding: 20px;
+            border-radius: 10px;
+            min-width: 80px;
+            backdrop-filter: blur(5px);
+            box-shadow: 0 0 15px rgba(0, 255, 255, 0.1);
+        }
+
+        .number {
+            font-size: 2.5rem;
+            font-weight: bold;
+            display: block;
+            color: #fff;
+        }
+
+        .label {
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            color: #00ffff;
+            letter-spacing: 1px;
+        }
+
+        /* Botón de llamada a la acción */
+        .cta-button {
+            padding: 15px 40px;
+            font-size: 1.1rem;
+            background: linear-gradient(90deg, #00ffff, #bf00ff);
+            border: none;
+            color: #000;
+            font-weight: bold;
+            border-radius: 30px;
+            cursor: pointer;
+            transition: transform 0.2s, box-shadow 0.2s;
+            text-decoration: none;
+        }
+
+        .cta-button:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 20px rgba(191, 0, 255, 0.6);
+        }
+
+        /* Ajustes para móviles */
+        @media (max-width: 600px) {
+            h1 { font-size: 2rem; }
+            .countdown { gap: 10px; }
+            .time-box { padding: 10px; min-width: 50px; }
+            .number { font-size: 1.5rem; }
+            .label { font-size: 0.6rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="glow"></div>
+
+    <div class="container">
+        <h1>PetScanIA 2.0</h1>
+        <p>Revolucionando el cuidado de tus mascotas con Inteligencia Artificial.<br>
+        La comunidad más grande llega este 25 de Abril.</p>
+
+        <div class="countdown" id="countdown">
+            <div class="time-box">
+                <span class="number" id="days">00</span>
+                <span class="label">Días</span>
+            </div>
+            <div class="time-box">
+                <span class="number" id="hours">00</span>
+                <span class="label">Horas</span>
+            </div>
+            <div class="time-box">
+                <span class="number" id="minutes">00</span>
+                <span class="label">Min</span>
+            </div>
+            <div class="time-box">
+                <span class="number" id="seconds">00</span>
+                <span class="label">Seg</span>
+            </div>
+        </div>
+
+        <a href="#" class="cta-button">Notificarme el lanzamiento</a>
+    </div>
+
+    <script>
+        // Fecha de lanzamiento: 25 de Abril de 2026 a las 00:00:00
+        const launchDate = new Date("April 25, 2026 00:00:00").getTime();
+
+        const timer = setInterval(function() {
+            const now = new Date().getTime();
+            const distance = launchDate - now;
+
+            // Cálculos de tiempo
+            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+            // Mostrar resultados
+            document.getElementById("days").innerText = days < 10 ? "0" + days : days;
+            document.getElementById("hours").innerText = hours < 10 ? "0" + hours : hours;
+            document.getElementById("minutes").innerText = minutes < 10 ? "0" + minutes : minutes;
+            document.getElementById("seconds").innerText = seconds < 10 ? "0" + seconds : seconds;
+
+            // Si la cuenta regresiva termina
+            if (distance < 0) {
+                clearInterval(timer);
+                document.getElementById("countdown").innerHTML = "<h2>¡YA ESTAMOS EN LÍNEA!</h2>";
+            }
+        }, 1000);
+    </script>
+</body>
+</html>
