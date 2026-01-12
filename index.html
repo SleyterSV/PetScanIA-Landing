@@ -17,8 +17,8 @@
             margin: 0; padding: 0;
             height: 100%; width: 100%;
             font-family: 'Rajdhani', sans-serif;
-            background-color: #050505; /* Negro puro de fondo */
-            overflow-x: hidden; /* Evita scroll horizontal */
+            background-color: #050505;
+            overflow-x: hidden;
         }
 
         /* --- FONDO ESTRUCTURAL --- */
@@ -26,7 +26,6 @@
             position: relative;
             min-height: 100vh;
             width: 100%;
-            /* IMAGEN DE FONDO */
             background-image: url('Fondo_PetScanIA.png'); 
             background-size: cover; 
             background-position: center center;
@@ -38,11 +37,11 @@
             padding: 20px;
         }
 
-        /* CAPA OSCURA (Vignette) para que se lea el texto */
+        /* CAPA OSCURA (Vignette) */
         .overlay {
             position: absolute;
             top: 0; left: 0; right: 0; bottom: 0;
-            background: radial-gradient(circle at center, rgba(0,0,0,0.4) 0%, rgba(0,0,0,0.95) 100%);
+            background: radial-gradient(circle at center, rgba(0,0,0,0.3) 0%, rgba(0,0,0,0.95) 100%);
             z-index: 1;
         }
 
@@ -57,23 +56,19 @@
             align-items: center;
         }
 
-        /* LOGO FLOTANTE */
+        /* LOGO */
         .logo-img {
-            width: 170px; /* Tamaño ideal laptop */
+            width: 150px; /* Tamaño optimizado */
             height: auto;
-            margin-bottom: 20px;
+            margin-bottom: 15px;
             filter: drop-shadow(0 0 30px rgba(0, 210, 255, 0.5));
             animation: float 5s ease-in-out infinite;
         }
+        @keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
 
-        @keyframes float {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-12px); }
-        }
-
-        /* TÍTULO PRINCIPAL */
+        /* TÍTULOS */
         h1 {
-            font-size: 4.2rem;
+            font-size: 3.8rem;
             margin: 0 0 10px 0;
             line-height: 1;
             background: linear-gradient(to right, #00d2ff, #ffffff, #9b59b6);
@@ -86,41 +81,38 @@
             text-shadow: 0 0 30px rgba(0, 210, 255, 0.4);
         }
 
-        /* SUBTÍTULO */
         p.subtitulo {
-            font-size: 1.4rem;
+            font-size: 1.2rem;
             color: #d1d5db;
-            margin-bottom: 45px;
+            margin-bottom: 35px;
             font-weight: 500;
             letter-spacing: 1px;
             max-width: 800px;
             text-shadow: 0 2px 4px rgba(0,0,0,0.8);
-            line-height: 1.4;
         }
 
-        /* --- ESTRUCTURA DEL CONTADOR (Timer) --- */
+        /* --- ESTRUCTURA DEL CONTADOR --- */
         .timer-wrapper {
             display: flex;
             flex-direction: column;
             align-items: center;
-            gap: 20px; /* Espacio entre la fila de Meses y la fila de Días */
-            margin-bottom: 50px;
+            gap: 15px;
+            margin-bottom: 40px;
             width: 100%;
         }
 
-        /* NIVEL 1: CAJA DE MESES (DESTACADA) */
+        /* NIVEL 1: MESES (GRANDE Y DESTACADO) */
         .months-box {
-            background: rgba(13, 18, 30, 0.8); /* Más oscuro */
-            border: 2px solid #9b59b6; /* Borde morado neón */
-            border-radius: 20px;
-            padding: 15px 50px;
+            background: rgba(13, 18, 30, 0.75);
+            border: 2px solid #bf00ff; /* Borde Neón Morado */
+            border-radius: 15px;
+            padding: 10px 50px;
             display: flex;
             flex-direction: column;
             align-items: center;
-            box-shadow: 0 0 30px rgba(155, 89, 182, 0.25);
+            box-shadow: 0 0 35px rgba(191, 0, 255, 0.25);
             backdrop-filter: blur(10px);
-            min-width: 220px;
-            transform: scale(1.1); /* Un poco más grande que el resto */
+            min-width: 200px;
         }
 
         .months-number {
@@ -128,19 +120,19 @@
             font-weight: 800;
             color: #fff;
             line-height: 1;
-            text-shadow: 0 0 20px rgba(155, 89, 182, 0.8);
+            text-shadow: 0 0 20px rgba(191, 0, 255, 0.8);
         }
 
         .months-label {
-            font-size: 1rem;
-            color: #d68bf7; /* Morado claro */
+            font-size: 0.9rem;
+            color: #e0aaff;
             text-transform: uppercase;
             letter-spacing: 3px;
             font-weight: 700;
             margin-top: 5px;
         }
 
-        /* NIVEL 2: CAJAS DE DETALLE (Días, Horas, Min, Seg) */
+        /* NIVEL 2: DETALLES (DÍAS, HORAS...) */
         .detail-timer {
             display: flex;
             gap: 15px;
@@ -150,13 +142,13 @@
         }
 
         .time-box {
-            background: rgba(13, 18, 30, 0.6);
-            border: 1px solid rgba(0, 210, 255, 0.3); /* Borde cyan sutil */
-            border-radius: 15px;
-            padding: 15px 10px;
-            flex: 1; /* Crecen para ocupar espacio */
-            min-width: 85px;
-            max-width: 130px;
+            background: rgba(13, 18, 30, 0.5);
+            border: 1px solid rgba(0, 210, 255, 0.3);
+            border-radius: 12px;
+            padding: 10px 5px;
+            flex: 1;
+            min-width: 80px;
+            max-width: 110px;
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -165,28 +157,27 @@
         }
 
         .time-number {
-            font-size: 2.5rem;
+            font-size: 2rem;
             font-weight: 700;
             color: #fff;
             text-shadow: 0 0 10px rgba(0, 210, 255, 0.5);
-            line-height: 1;
         }
 
         .time-label {
-            font-size: 0.8rem;
-            color: #00d2ff; /* Cyan */
+            font-size: 0.75rem;
+            color: #00d2ff;
             text-transform: uppercase;
             letter-spacing: 1px;
-            margin-top: 8px;
+            margin-top: 5px;
             font-weight: 600;
         }
 
-        /* --- BOTÓN PRINCIPAL --- */
+        /* --- BOTÓN --- */
         .btn-lanzamiento {
             background: linear-gradient(135deg, #00d2ff 0%, #9b59b6 100%);
             color: white;
-            padding: 20px 60px;
-            font-size: 1.2rem;
+            padding: 18px 50px;
+            font-size: 1.1rem;
             border: none;
             border-radius: 50px;
             text-decoration: none;
@@ -196,17 +187,16 @@
             text-transform: uppercase;
             transition: all 0.3s ease;
             cursor: pointer;
-            display: inline-block;
+            margin-top: 5px;
         }
-
         .btn-lanzamiento:hover {
             box-shadow: 0 0 50px rgba(0, 210, 255, 0.7);
             transform: scale(1.05);
         }
 
-        /* --- MODAL (POPUP) --- */
+        /* --- MODAL --- */
         .modal-overlay {
-            display: none; /* Oculto inicio */
+            display: none;
             position: fixed;
             z-index: 100;
             left: 0; top: 0;
@@ -222,9 +212,9 @@
             background: rgba(15, 23, 42, 0.95);
             border: 1px solid #00d2ff;
             border-radius: 20px;
-            padding: 40px 30px;
+            padding: 30px;
             width: 100%;
-            max-width: 450px;
+            max-width: 400px;
             text-align: center;
             position: relative;
             box-shadow: 0 0 40px rgba(0, 210, 255, 0.2);
@@ -236,7 +226,7 @@
             position: absolute;
             top: 15px; right: 20px;
             color: #aaa;
-            font-size: 30px;
+            font-size: 28px;
             font-weight: bold;
             cursor: pointer;
         }
@@ -250,30 +240,24 @@
             border-radius: 10px;
             color: #fff;
             font-family: 'Rajdhani', sans-serif;
-            font-size: 1.1rem;
+            font-size: 1rem;
             outline: none;
         }
         
-        .btn-submit { width: 100%; margin-top: 15px; }
+        .btn-submit { width: 100%; margin-top: 10px; }
         #msg-exito { color: #00ffaa; display: none; margin-top: 15px; font-weight: bold; }
 
-        /* --- RESPONSIVE (CELULARES) --- */
+        /* --- RESPONSIVE --- */
         @media (max-width: 768px) {
-            h1 { font-size: 3rem; margin-bottom: 15px; }
-            p.subtitulo { font-size: 1.2rem; margin-bottom: 35px; }
-            .logo-img { width: 140px; margin-bottom: 25px; }
-            
-            /* Ajustes del timer en móvil */
-            .timer-wrapper { gap: 15px; margin-bottom: 40px; }
-            .months-box { padding: 10px 40px; min-width: 180px; transform: scale(1); }
+            h1 { font-size: 2.8rem; }
+            .logo-img { width: 130px; }
+            .timer-wrapper { gap: 10px; }
+            .months-box { padding: 10px 40px; min-width: 160px; }
             .months-number { font-size: 3rem; }
-            
             .detail-timer { gap: 8px; }
-            .time-box { padding: 10px 5px; min-width: 70px; }
-            .time-number { font-size: 2rem; }
-            .time-label { font-size: 0.7rem; }
-
-            .btn-lanzamiento { width: 90%; font-size: 1.1rem; padding: 18px 0; }
+            .time-box { padding: 8px 2px; min-width: 65px; }
+            .time-number { font-size: 1.6rem; }
+            .btn-lanzamiento { width: 90%; font-size: 1rem; padding: 16px 0; }
         }
     </style>
 </head>
@@ -353,34 +337,29 @@
                 return;
             }
 
-            // Cálculo aproximado de Meses
+            // Cálculo de Meses
             let months = (launchDate.getFullYear() - now.getFullYear()) * 12;
             months -= now.getMonth();
             months += launchDate.getMonth();
             
-            // Ajuste fino si el día actual es mayor al día objetivo
+            // Ajuste si no ha pasado el día del mes
             if (launchDate.getDate() < now.getDate()) {
                 months--;
             }
 
-            // Crear fecha temporal sumando los meses para calcular la diferencia restante exacta
+            // Fecha temporal sumando los meses para sacar el resto de días
             let tempDate = new Date(now);
             tempDate.setMonth(now.getMonth() + months);
             
             let diff = launchDate - tempDate;
-
-            // Evitar negativos en milisegundos por desfases de días
-            if (diff < 0) { 
-                // Ajuste de seguridad
-                diff = 0; 
-            }
+            if (diff < 0) diff = 0; // Seguridad
 
             const days = Math.floor(diff / (1000 * 60 * 60 * 24));
             const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
             const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
             const seconds = Math.floor((diff % (1000 * 60)) / 1000);
 
-            // Pintar en HTML
+            // Actualizar HTML
             document.getElementById("months").innerText = months < 0 ? 0 : months;
             document.getElementById("days").innerText = days < 10 ? "0" + days : days;
             document.getElementById("hours").innerText = hours < 10 ? "0" + hours : hours;
