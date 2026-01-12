@@ -6,27 +6,30 @@
     <title>PetScanIA 2.0 - Próximamente</title>
     <link rel="icon" href="Logo_PetScanIA.png" type="image/png">
     
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@500;600;700&display=swap" rel="stylesheet">
+
     <style>
-        /* --- ESTILOS GENERALES --- */
+        /* --- RESET Y BASE --- */
+        * { box-sizing: border-box; }
         body, html {
             margin: 0;
             padding: 0;
             height: 100%;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: #000;
-            overflow: hidden; /* Evita scroll innecesario */
+            font-family: 'Rajdhani', sans-serif; /* Fuente Tech */
+            background-color: #050505;
+            overflow-x: hidden;
         }
 
-        /* FONDO CON TU IMAGEN NUEVA */
+        /* --- FONDO ESTRUCTURAL --- */
         .hero-container {
             position: relative;
-            height: 100vh;
+            min-height: 100vh;
             width: 100%;
-            /* Aquí cargamos tu imagen de fondo subida a GitHub */
             background-image: url('Fondo_PetScanIA.png'); 
-            background-size: cover; /* Ajusta la imagen para cubrir toda la pantalla */
-            background-position: center; /* Centra el robot y las mascotas */
-            background-repeat: no-repeat;
+            background-size: cover; 
+            background-position: center;
             display: flex;
             flex-direction: column;
             justify-content: center;
@@ -34,138 +37,171 @@
             text-align: center;
         }
 
-        /* CAPA OSCURA (Para que el texto se lea bien sobre la imagen) */
+        /* CAPA OSCURA MEJORADA (Vignette) */
         .overlay {
             position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            /* Un degradado negro semitransparente */
-            background: linear-gradient(to bottom, rgba(0,0,0,0.5), rgba(0,0,0,0.85));
+            top: 0; left: 0; width: 100%; height: 100%;
+            /* Degradado radial para oscurecer bordes y resaltar el centro */
+            background: radial-gradient(circle at center, rgba(0,0,0,0.5) 0%, rgba(0,0,0,0.9) 100%);
             z-index: 1;
         }
 
-        /* CONTENEDOR CENTRAL */
+        /* --- CONTENIDO --- */
         .contenido {
             position: relative;
-            z-index: 2; /* Para que quede encima de la capa oscura */
+            z-index: 10;
             padding: 20px;
-            max-width: 800px;
-            width: 90%;
-        }
-
-        /* TU LOGO */
-        .logo-img {
-            width: 180px; /* Tamaño del logo */
-            height: auto;
-            margin-bottom: 20px;
-            /* Efecto de brillo cyan alrededor del logo */
-            filter: drop-shadow(0 0 15px rgba(0, 255, 255, 0.5));
-            animation: float 6s ease-in-out infinite;
-        }
-
-        /* TEXTO PRINCIPAL */
-        h1 {
-            font-size: 3.5rem;
-            margin: 0 0 10px 0;
-            /* Degradado de texto Cyan a Morado */
-            background: linear-gradient(90deg, #00d2ff, #9b59b6);
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-            text-transform: uppercase;
-            font-weight: 800;
-            letter-spacing: 2px;
-        }
-
-        p.subtitulo {
-            font-size: 1.2rem;
-            margin-bottom: 40px;
-            color: #f0f0f0;
-            line-height: 1.6;
-            text-shadow: 0 2px 4px rgba(0,0,0,0.8);
-        }
-
-        /* ESTILOS DEL CONTADOR (TIMER) */
-        .timer-container {
-            display: flex;
-            justify-content: center;
-            gap: 20px; /* Espacio entre círculos */
-            margin-bottom: 50px;
-            flex-wrap: wrap;
-        }
-
-        .time-box {
+            width: 100%;
+            max-width: 900px;
             display: flex;
             flex-direction: column;
             align-items: center;
         }
 
-        /* Círculos de neón para los números */
-        .circle-wrapper {
-            width: 90px;
-            height: 90px;
-            border-radius: 50%;
-            border: 2px solid rgba(0, 210, 255, 0.4);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            background: rgba(0, 0, 0, 0.3);
-            box-shadow: 0 0 15px rgba(0, 210, 255, 0.2);
+        /* LOGO CON EFECTO DE LEVITACIÓN */
+        .logo-img {
+            width: 160px;
+            height: auto;
+            margin-bottom: 15px;
+            filter: drop-shadow(0 0 20px rgba(0, 210, 255, 0.5));
+            animation: float 4s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        /* TITULAR */
+        h1 {
+            font-size: 4rem;
+            margin: 0;
+            line-height: 1;
+            background: linear-gradient(to right, #00d2ff, #ffffff, #9b59b6);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            text-transform: uppercase;
+            font-weight: 700;
+            letter-spacing: 3px;
             margin-bottom: 10px;
-            backdrop-filter: blur(4px);
+            text-shadow: 0 0 30px rgba(0, 210, 255, 0.3);
+        }
+
+        p.subtitulo {
+            font-size: 1.4rem;
+            color: #d1d5db;
+            margin-bottom: 40px;
+            font-weight: 500;
+            letter-spacing: 1px;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.8);
+            max-width: 700px;
+        }
+
+        /* --- NUEVO ESTILO DEL TIMER (TARJETAS DE CRISTAL) --- */
+        .timer-container {
+            display: flex;
+            gap: 20px;
+            margin-bottom: 50px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .time-box {
+            background: rgba(13, 18, 30, 0.6); /* Fondo oscuro semitransparente */
+            backdrop-filter: blur(10px); /* Efecto borroso detrás */
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(0, 210, 255, 0.3); /* Borde sutil cyan */
+            border-radius: 12px;
+            padding: 15px 25px;
+            min-width: 110px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.5);
+            transition: transform 0.3s ease;
+        }
+
+        .time-box:hover {
+            transform: translateY(-5px);
+            border-color: rgba(0, 210, 255, 0.8);
+            box-shadow: 0 0 20px rgba(0, 210, 255, 0.2);
         }
 
         .time-number {
-            font-size: 2.2rem;
-            font-weight: bold;
+            font-size: 3.5rem;
+            font-weight: 700;
             color: #fff;
+            line-height: 1;
+            text-shadow: 0 0 10px rgba(0, 210, 255, 0.6); /* Resplandor neón en números */
         }
 
         .time-label {
-            font-size: 0.85rem;
+            font-size: 0.9rem;
             color: #00d2ff;
             text-transform: uppercase;
-            letter-spacing: 1px;
+            letter-spacing: 2px;
+            margin-top: 5px;
             font-weight: 600;
         }
 
-        /* BOTÓN DE ACCIÓN */
+        /* SEPARADOR (Dos puntos :) */
+        .separator {
+            font-size: 3rem;
+            color: rgba(255,255,255,0.3);
+            margin-top: 10px;
+            display: none; /* Oculto en móviles, visible en PC si quieres */
+        }
+
+        /* --- BOTÓN MEJORADO --- */
         .btn-lanzamiento {
-            display: inline-block;
-            background: linear-gradient(90deg, #00d2ff, #bf00ff);
+            background: linear-gradient(135deg, #00d2ff 0%, #9b59b6 100%);
             color: white;
-            padding: 15px 45px;
-            font-size: 1.1rem;
-            border: none;
+            padding: 18px 50px;
+            font-size: 1.2rem;
             border-radius: 50px;
-            cursor: pointer;
             text-decoration: none;
-            font-weight: bold;
-            box-shadow: 0 0 20px rgba(191, 0, 255, 0.4);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            font-weight: 700;
+            letter-spacing: 1px;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            box-shadow: 0 0 20px rgba(0, 210, 255, 0.4);
+            text-transform: uppercase;
         }
 
         .btn-lanzamiento:hover {
+            box-shadow: 0 0 40px rgba(0, 210, 255, 0.7);
             transform: scale(1.05);
-            box-shadow: 0 0 40px rgba(0, 210, 255, 0.6);
         }
 
-        /* Animación suave para el logo */
-        @keyframes float {
-            0% { transform: translateY(0px); }
-            50% { transform: translateY(-10px); }
-            100% { transform: translateY(0px); }
-        }
-
-        /* RESPONSIVE (MÓVILES) */
+        /* --- RESPONSIVE PARA CELULARES --- */
         @media (max-width: 768px) {
-            h1 { font-size: 2.5rem; }
-            .logo-img { width: 140px; }
-            .circle-wrapper { width: 70px; height: 70px; }
-            .time-number { font-size: 1.5rem; }
-            .timer-container { gap: 10px; }
+            h1 { font-size: 2.8rem; } /* Título más pequeño */
+            p.subtitulo { font-size: 1.1rem; padding: 0 15px; }
+            
+            .timer-container { 
+                gap: 10px; 
+                width: 100%;
+                padding: 0 10px;
+            }
+
+            .time-box {
+                min-width: 75px; /* Cajas más pequeñas */
+                padding: 10px 5px;
+                flex: 1; /* Se estiran para llenar el ancho */
+            }
+
+            .time-number { font-size: 2.2rem; }
+            .time-label { font-size: 0.7rem; letter-spacing: 1px; }
+            
+            .btn-lanzamiento {
+                width: 90%; /* Botón ancho en celular */
+                padding: 15px 0;
+                font-size: 1rem;
+            }
+            
+            .logo-img { width: 130px; }
         }
     </style>
 </head>
@@ -179,27 +215,26 @@
             <img src="Logo_PetScanIA.png" alt="PetScanIA Logo" class="logo-img">
 
             <h1>PetScanIA 2.0</h1>
-            
             <p class="subtitulo">
-                Revolucionando el cuidado de tus mascotas con Inteligencia Artificial.<br>
+                Revolucionando el cuidado veterinario con IA.<br>
                 La comunidad más grande llega este <strong>25 de Abril</strong>.
             </p>
 
             <div class="timer-container" id="countdown">
                 <div class="time-box">
-                    <div class="circle-wrapper"><span class="time-number" id="days">00</span></div>
+                    <span class="time-number" id="days">00</span>
                     <span class="time-label">Días</span>
                 </div>
                 <div class="time-box">
-                    <div class="circle-wrapper"><span class="time-number" id="hours">00</span></div>
+                    <span class="time-number" id="hours">00</span>
                     <span class="time-label">Horas</span>
                 </div>
                 <div class="time-box">
-                    <div class="circle-wrapper"><span class="time-number" id="minutes">00</span></div>
+                    <span class="time-number" id="minutes">00</span>
                     <span class="time-label">Min</span>
                 </div>
                 <div class="time-box">
-                    <div class="circle-wrapper"><span class="time-number" id="seconds">00</span></div>
+                    <span class="time-number" id="seconds">00</span>
                     <span class="time-label">Seg</span>
                 </div>
             </div>
@@ -209,32 +244,27 @@
     </div>
 
     <script>
-        // Configuración de la fecha: 25 de Abril de 2026
         const launchDate = new Date("April 25, 2026 00:00:00").getTime();
 
         const timer = setInterval(function() {
             const now = new Date().getTime();
             const distance = launchDate - now;
 
-            // Cálculos matemáticos
             const days = Math.floor(distance / (1000 * 60 * 60 * 24));
             const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
             const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
             const seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
-            // Actualizar HTML
             document.getElementById("days").innerText = days < 10 ? "0" + days : days;
             document.getElementById("hours").innerText = hours < 10 ? "0" + hours : hours;
             document.getElementById("minutes").innerText = minutes < 10 ? "0" + minutes : minutes;
             document.getElementById("seconds").innerText = seconds < 10 ? "0" + seconds : seconds;
 
-            // Al finalizar
             if (distance < 0) {
                 clearInterval(timer);
-                document.getElementById("countdown").innerHTML = "<h2>¡YA ESTAMOS EN VIVO!</h2>";
+                document.getElementById("countdown").innerHTML = "<h2 style='color:#fff'>¡YA ESTAMOS EN VIVO!</h2>";
             }
         }, 1000);
     </script>
-
 </body>
 </html>
