@@ -4,173 +4,237 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>PetScanIA 2.0 - Próximamente</title>
+    <link rel="icon" href="Logo_PetScanIA.png" type="image/png">
+    
     <style>
-        /* Estilos base con estética Tech/Cyberpunk */
-        body {
+        /* --- ESTILOS GENERALES --- */
+        body, html {
             margin: 0;
             padding: 0;
+            height: 100%;
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: #050505;
-            color: #ffffff;
+            background-color: #000;
+            overflow: hidden; /* Evita scroll innecesario */
+        }
+
+        /* FONDO CON TU IMAGEN NUEVA */
+        .hero-container {
+            position: relative;
+            height: 100vh;
+            width: 100%;
+            /* Aquí cargamos tu imagen de fondo subida a GitHub */
+            background-image: url('Fondo_PetScanIA.png'); 
+            background-size: cover; /* Ajusta la imagen para cubrir toda la pantalla */
+            background-position: center; /* Centra el robot y las mascotas */
+            background-repeat: no-repeat;
             display: flex;
             flex-direction: column;
-            align-items: center;
             justify-content: center;
-            height: 100vh;
-            overflow: hidden;
-            background: radial-gradient(circle at center, #1a1a2e 0%, #000000 100%);
-        }
-
-        /* Efecto de luz de fondo (Neon glow) */
-        .glow {
-            position: absolute;
-            width: 600px;
-            height: 600px;
-            background: radial-gradient(circle, rgba(0, 255, 255, 0.1) 0%, rgba(128, 0, 128, 0.05) 50%, transparent 70%);
-            z-index: 0;
-        }
-
-        .container {
-            z-index: 1;
+            align-items: center;
             text-align: center;
-            max-width: 800px;
-            padding: 20px;
         }
 
+        /* CAPA OSCURA (Para que el texto se lea bien sobre la imagen) */
+        .overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            /* Un degradado negro semitransparente */
+            background: linear-gradient(to bottom, rgba(0,0,0,0.5), rgba(0,0,0,0.85));
+            z-index: 1;
+        }
+
+        /* CONTENEDOR CENTRAL */
+        .contenido {
+            position: relative;
+            z-index: 2; /* Para que quede encima de la capa oscura */
+            padding: 20px;
+            max-width: 800px;
+            width: 90%;
+        }
+
+        /* TU LOGO */
+        .logo-img {
+            width: 180px; /* Tamaño del logo */
+            height: auto;
+            margin-bottom: 20px;
+            /* Efecto de brillo cyan alrededor del logo */
+            filter: drop-shadow(0 0 15px rgba(0, 255, 255, 0.5));
+            animation: float 6s ease-in-out infinite;
+        }
+
+        /* TEXTO PRINCIPAL */
         h1 {
             font-size: 3.5rem;
-            margin-bottom: 10px;
-            background: -webkit-linear-gradient(45deg, #00ffff, #bf00ff);
+            margin: 0 0 10px 0;
+            /* Degradado de texto Cyan a Morado */
+            background: linear-gradient(90deg, #00d2ff, #9b59b6);
             -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            color: transparent;
             text-transform: uppercase;
+            font-weight: 800;
             letter-spacing: 2px;
         }
 
-        p {
+        p.subtitulo {
             font-size: 1.2rem;
-            color: #cccccc;
             margin-bottom: 40px;
+            color: #f0f0f0;
+            line-height: 1.6;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.8);
         }
 
-        /* Estilos del Contador */
-        .countdown {
+        /* ESTILOS DEL CONTADOR (TIMER) */
+        .timer-container {
             display: flex;
             justify-content: center;
-            gap: 20px;
+            gap: 20px; /* Espacio entre círculos */
             margin-bottom: 50px;
+            flex-wrap: wrap;
         }
 
         .time-box {
-            background: rgba(255, 255, 255, 0.05);
-            border: 1px solid rgba(0, 255, 255, 0.3);
-            padding: 20px;
-            border-radius: 10px;
-            min-width: 80px;
-            backdrop-filter: blur(5px);
-            box-shadow: 0 0 15px rgba(0, 255, 255, 0.1);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
         }
 
-        .number {
-            font-size: 2.5rem;
+        /* Círculos de neón para los números */
+        .circle-wrapper {
+            width: 90px;
+            height: 90px;
+            border-radius: 50%;
+            border: 2px solid rgba(0, 210, 255, 0.4);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: rgba(0, 0, 0, 0.3);
+            box-shadow: 0 0 15px rgba(0, 210, 255, 0.2);
+            margin-bottom: 10px;
+            backdrop-filter: blur(4px);
+        }
+
+        .time-number {
+            font-size: 2.2rem;
             font-weight: bold;
-            display: block;
             color: #fff;
         }
 
-        .label {
-            font-size: 0.8rem;
+        .time-label {
+            font-size: 0.85rem;
+            color: #00d2ff;
             text-transform: uppercase;
-            color: #00ffff;
             letter-spacing: 1px;
+            font-weight: 600;
         }
 
-        /* Botón de llamada a la acción */
-        .cta-button {
-            padding: 15px 40px;
+        /* BOTÓN DE ACCIÓN */
+        .btn-lanzamiento {
+            display: inline-block;
+            background: linear-gradient(90deg, #00d2ff, #bf00ff);
+            color: white;
+            padding: 15px 45px;
             font-size: 1.1rem;
-            background: linear-gradient(90deg, #00ffff, #bf00ff);
             border: none;
-            color: #000;
-            font-weight: bold;
-            border-radius: 30px;
+            border-radius: 50px;
             cursor: pointer;
-            transition: transform 0.2s, box-shadow 0.2s;
             text-decoration: none;
+            font-weight: bold;
+            box-shadow: 0 0 20px rgba(191, 0, 255, 0.4);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
 
-        .cta-button:hover {
+        .btn-lanzamiento:hover {
             transform: scale(1.05);
-            box-shadow: 0 0 20px rgba(191, 0, 255, 0.6);
+            box-shadow: 0 0 40px rgba(0, 210, 255, 0.6);
         }
 
-        /* Ajustes para móviles */
-        @media (max-width: 600px) {
-            h1 { font-size: 2rem; }
-            .countdown { gap: 10px; }
-            .time-box { padding: 10px; min-width: 50px; }
-            .number { font-size: 1.5rem; }
-            .label { font-size: 0.6rem; }
+        /* Animación suave para el logo */
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+            100% { transform: translateY(0px); }
+        }
+
+        /* RESPONSIVE (MÓVILES) */
+        @media (max-width: 768px) {
+            h1 { font-size: 2.5rem; }
+            .logo-img { width: 140px; }
+            .circle-wrapper { width: 70px; height: 70px; }
+            .time-number { font-size: 1.5rem; }
+            .timer-container { gap: 10px; }
         }
     </style>
 </head>
 <body>
 
-    <div class="glow"></div>
+    <div class="hero-container">
+        <div class="overlay"></div>
 
-    <div class="container">
-        <h1>PetScanIA 2.0</h1>
-        <p>Revolucionando el cuidado de tus mascotas con Inteligencia Artificial.<br>
-        La comunidad más grande llega este 25 de Abril.</p>
+        <div class="contenido">
+            
+            <img src="Logo_PetScanIA.png" alt="PetScanIA Logo" class="logo-img">
 
-        <div class="countdown" id="countdown">
-            <div class="time-box">
-                <span class="number" id="days">00</span>
-                <span class="label">Días</span>
+            <h1>PetScanIA 2.0</h1>
+            
+            <p class="subtitulo">
+                Revolucionando el cuidado de tus mascotas con Inteligencia Artificial.<br>
+                La comunidad más grande llega este <strong>25 de Abril</strong>.
+            </p>
+
+            <div class="timer-container" id="countdown">
+                <div class="time-box">
+                    <div class="circle-wrapper"><span class="time-number" id="days">00</span></div>
+                    <span class="time-label">Días</span>
+                </div>
+                <div class="time-box">
+                    <div class="circle-wrapper"><span class="time-number" id="hours">00</span></div>
+                    <span class="time-label">Horas</span>
+                </div>
+                <div class="time-box">
+                    <div class="circle-wrapper"><span class="time-number" id="minutes">00</span></div>
+                    <span class="time-label">Min</span>
+                </div>
+                <div class="time-box">
+                    <div class="circle-wrapper"><span class="time-number" id="seconds">00</span></div>
+                    <span class="time-label">Seg</span>
+                </div>
             </div>
-            <div class="time-box">
-                <span class="number" id="hours">00</span>
-                <span class="label">Horas</span>
-            </div>
-            <div class="time-box">
-                <span class="number" id="minutes">00</span>
-                <span class="label">Min</span>
-            </div>
-            <div class="time-box">
-                <span class="number" id="seconds">00</span>
-                <span class="label">Seg</span>
-            </div>
+
+            <a href="#" class="btn-lanzamiento">Notificarme el lanzamiento</a>
         </div>
-
-        <a href="#" class="cta-button">Notificarme el lanzamiento</a>
     </div>
 
     <script>
-        // Fecha de lanzamiento: 25 de Abril de 2026 a las 00:00:00
+        // Configuración de la fecha: 25 de Abril de 2026
         const launchDate = new Date("April 25, 2026 00:00:00").getTime();
 
         const timer = setInterval(function() {
             const now = new Date().getTime();
             const distance = launchDate - now;
 
-            // Cálculos de tiempo
+            // Cálculos matemáticos
             const days = Math.floor(distance / (1000 * 60 * 60 * 24));
             const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
             const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
             const seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
-            // Mostrar resultados
+            // Actualizar HTML
             document.getElementById("days").innerText = days < 10 ? "0" + days : days;
             document.getElementById("hours").innerText = hours < 10 ? "0" + hours : hours;
             document.getElementById("minutes").innerText = minutes < 10 ? "0" + minutes : minutes;
             document.getElementById("seconds").innerText = seconds < 10 ? "0" + seconds : seconds;
 
-            // Si la cuenta regresiva termina
+            // Al finalizar
             if (distance < 0) {
                 clearInterval(timer);
-                document.getElementById("countdown").innerHTML = "<h2>¡YA ESTAMOS EN LÍNEA!</h2>";
+                document.getElementById("countdown").innerHTML = "<h2>¡YA ESTAMOS EN VIVO!</h2>";
             }
         }, 1000);
     </script>
+
 </body>
 </html>
