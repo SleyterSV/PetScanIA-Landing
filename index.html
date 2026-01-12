@@ -2,7 +2,7 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>PetScanIA 2.0 - Próximamente</title>
     <link rel="icon" href="Logo_PetScanIA.png" type="image/png">
     
@@ -17,32 +17,33 @@
             margin: 0;
             padding: 0;
             height: 100%;
-            font-family: 'Rajdhani', sans-serif; /* Fuente Tech */
+            width: 100%;
+            font-family: 'Rajdhani', sans-serif;
             background-color: #050505;
-            overflow-x: hidden;
+            overflow-x: hidden; /* Evita scroll horizontal */
         }
 
         /* --- FONDO ESTRUCTURAL --- */
         .hero-container {
             position: relative;
-            min-height: 100vh;
+            min-height: 100vh; /* Ocupa al menos toda la altura */
             width: 100%;
             background-image: url('Fondo_PetScanIA.png'); 
             background-size: cover; 
-            background-position: center;
+            background-position: center center; /* Centrado perfecto del fondo */
             display: flex;
             flex-direction: column;
-            justify-content: center;
-            align-items: center;
+            justify-content: center; /* Centra verticalmente */
+            align-items: center; /* Centra horizontalmente */
             text-align: center;
+            padding: 20px; /* Un poco de margen interno */
         }
 
-        /* CAPA OSCURA MEJORADA (Vignette) */
+        /* CAPA OSCURA (Vignette) */
         .overlay {
             position: absolute;
-            top: 0; left: 0; width: 100%; height: 100%;
-            /* Degradado radial para oscurecer bordes y resaltar el centro */
-            background: radial-gradient(circle at center, rgba(0,0,0,0.5) 0%, rgba(0,0,0,0.9) 100%);
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: radial-gradient(circle at center, rgba(0,0,0,0.4) 0%, rgba(0,0,0,0.9) 100%);
             z-index: 1;
         }
 
@@ -50,158 +51,159 @@
         .contenido {
             position: relative;
             z-index: 10;
-            padding: 20px;
             width: 100%;
-            max-width: 900px;
+            max-width: 1000px; /* Ancho máximo para pantallas grandes */
             display: flex;
             flex-direction: column;
             align-items: center;
         }
 
-        /* LOGO CON EFECTO DE LEVITACIÓN */
+        /* LOGO FLOTANTE */
         .logo-img {
-            width: 160px;
+            width: 180px; /* Un poco más grande en PC */
+            max-width: 40%; /* Para que no sea gigante en tablets */
             height: auto;
-            margin-bottom: 15px;
-            filter: drop-shadow(0 0 20px rgba(0, 210, 255, 0.5));
+            margin-bottom: 20px;
+            filter: drop-shadow(0 0 25px rgba(0, 210, 255, 0.6));
             animation: float 4s ease-in-out infinite;
         }
 
         @keyframes float {
             0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-10px); }
+            50% { transform: translateY(-12px); }
         }
 
         /* TITULAR */
         h1 {
-            font-size: 4rem;
-            margin: 0;
-            line-height: 1;
+            font-size: 4.5rem;
+            margin: 0 0 15px 0;
+            line-height: 1.1;
             background: linear-gradient(to right, #00d2ff, #ffffff, #9b59b6);
             -webkit-background-clip: text;
             background-clip: text;
             color: transparent;
             text-transform: uppercase;
-            font-weight: 700;
+            font-weight: 800;
             letter-spacing: 3px;
-            margin-bottom: 10px;
-            text-shadow: 0 0 30px rgba(0, 210, 255, 0.3);
+            text-shadow: 0 0 30px rgba(0, 210, 255, 0.4);
         }
 
         p.subtitulo {
-            font-size: 1.4rem;
+            font-size: 1.5rem;
             color: #d1d5db;
-            margin-bottom: 40px;
+            margin-bottom: 50px;
             font-weight: 500;
             letter-spacing: 1px;
-            text-shadow: 0 2px 4px rgba(0,0,0,0.8);
-            max-width: 700px;
+            max-width: 800px;
+            line-height: 1.5;
         }
 
-        /* --- NUEVO ESTILO DEL TIMER (TARJETAS DE CRISTAL) --- */
+        /* --- TIMER MEJORADO (RESPONSIVE) --- */
         .timer-container {
             display: flex;
-            gap: 20px;
-            margin-bottom: 50px;
-            flex-wrap: wrap;
+            gap: 25px;
+            margin-bottom: 60px;
             justify-content: center;
+            width: 100%;
+            max-width: 900px;
+            flex-wrap: wrap; /* Permite que bajen de línea si no caben */
         }
 
         .time-box {
-            background: rgba(13, 18, 30, 0.6); /* Fondo oscuro semitransparente */
-            backdrop-filter: blur(10px); /* Efecto borroso detrás */
-            -webkit-backdrop-filter: blur(10px);
-            border: 1px solid rgba(0, 210, 255, 0.3); /* Borde sutil cyan */
-            border-radius: 12px;
-            padding: 15px 25px;
-            min-width: 110px;
+            background: rgba(13, 18, 30, 0.65);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(0, 210, 255, 0.35);
+            border-radius: 15px;
+            padding: 20px 10px;
+            /* Flexibilidad para que se ajusten */
+            flex: 1 1 160px; /* Crecen y se encogen, base de 160px */
+            max-width: 200px; /* No más anchos que esto */
             display: flex;
             flex-direction: column;
             align-items: center;
-            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.5);
-            transition: transform 0.3s ease;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
+            transition: all 0.3s ease;
         }
 
         .time-box:hover {
-            transform: translateY(-5px);
-            border-color: rgba(0, 210, 255, 0.8);
-            box-shadow: 0 0 20px rgba(0, 210, 255, 0.2);
+            transform: translateY(-8px);
+            border-color: rgba(0, 210, 255, 0.9);
+            box-shadow: 0 0 30px rgba(0, 210, 255, 0.3);
         }
 
         .time-number {
-            font-size: 3.5rem;
-            font-weight: 700;
+            font-size: 4rem;
+            font-weight: 800;
             color: #fff;
             line-height: 1;
-            text-shadow: 0 0 10px rgba(0, 210, 255, 0.6); /* Resplandor neón en números */
+            text-shadow: 0 0 15px rgba(0, 210, 255, 0.7);
         }
 
         .time-label {
-            font-size: 0.9rem;
+            font-size: 1rem;
             color: #00d2ff;
             text-transform: uppercase;
             letter-spacing: 2px;
-            margin-top: 5px;
-            font-weight: 600;
-        }
-
-        /* SEPARADOR (Dos puntos :) */
-        .separator {
-            font-size: 3rem;
-            color: rgba(255,255,255,0.3);
             margin-top: 10px;
-            display: none; /* Oculto en móviles, visible en PC si quieres */
+            font-weight: 700;
         }
 
-        /* --- BOTÓN MEJORADO --- */
+        /* --- BOTÓN --- */
         .btn-lanzamiento {
             background: linear-gradient(135deg, #00d2ff 0%, #9b59b6 100%);
             color: white;
-            padding: 18px 50px;
-            font-size: 1.2rem;
+            padding: 20px 60px;
+            font-size: 1.3rem;
             border-radius: 50px;
             text-decoration: none;
             font-weight: 700;
-            letter-spacing: 1px;
-            position: relative;
-            overflow: hidden;
-            transition: all 0.3s ease;
-            box-shadow: 0 0 20px rgba(0, 210, 255, 0.4);
+            letter-spacing: 1.5px;
+            box-shadow: 0 0 25px rgba(0, 210, 255, 0.5);
             text-transform: uppercase;
+            transition: all 0.3s ease;
+            display: inline-block;
         }
 
         .btn-lanzamiento:hover {
-            box-shadow: 0 0 40px rgba(0, 210, 255, 0.7);
+            box-shadow: 0 0 50px rgba(0, 210, 255, 0.8);
             transform: scale(1.05);
         }
 
-        /* --- RESPONSIVE PARA CELULARES --- */
+        /* --- MEDIA QUERIES (CELULARES) --- */
         @media (max-width: 768px) {
-            h1 { font-size: 2.8rem; } /* Título más pequeño */
-            p.subtitulo { font-size: 1.1rem; padding: 0 15px; }
+            .hero-container { padding: 15px; }
             
+            h1 { font-size: 2.8rem; letter-spacing: 1px; }
+            p.subtitulo { font-size: 1.1rem; margin-bottom: 35px; }
+            .logo-img { width: 140px; }
+
             .timer-container { 
                 gap: 10px; 
-                width: 100%;
-                padding: 0 10px;
+                margin-bottom: 40px;
             }
 
             .time-box {
-                min-width: 75px; /* Cajas más pequeñas */
-                padding: 10px 5px;
-                flex: 1; /* Se estiran para llenar el ancho */
+                /* En celular, que sean 2 filas de 2 columnas */
+                flex: 1 1 40%; 
+                max-width: none; /* Quitamos el límite para que llenen el espacio */
+                padding: 15px 5px;
             }
 
-            .time-number { font-size: 2.2rem; }
-            .time-label { font-size: 0.7rem; letter-spacing: 1px; }
+            .time-number { font-size: 2.5rem; }
+            .time-label { font-size: 0.8rem; margin-top: 5px; }
             
             .btn-lanzamiento {
-                width: 90%; /* Botón ancho en celular */
-                padding: 15px 0;
-                font-size: 1rem;
+                width: 90%; /* Botón ancho para que sea fácil de tocar */
+                padding: 18px 0;
+                font-size: 1.1rem;
             }
-            
-            .logo-img { width: 130px; }
+        }
+
+        /* Para pantallas muy pequeñas (iPhone SE, etc.) */
+        @media (max-width: 380px) {
+            h1 { font-size: 2.2rem; }
+            .time-number { font-size: 2rem; }
         }
     </style>
 </head>
@@ -262,7 +264,7 @@
 
             if (distance < 0) {
                 clearInterval(timer);
-                document.getElementById("countdown").innerHTML = "<h2 style='color:#fff'>¡YA ESTAMOS EN VIVO!</h2>";
+                document.getElementById("countdown").innerHTML = "<h2 style='color:#fff; text-shadow: 0 0 20px #00d2ff;'>¡YA ESTAMOS EN VIVO!</h2>";
             }
         }, 1000);
     </script>
