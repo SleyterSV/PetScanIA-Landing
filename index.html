@@ -14,13 +14,11 @@
         /* --- ESTILOS BASE --- */
         * { box-sizing: border-box; }
         body, html {
-            margin: 0;
-            padding: 0;
-            height: 100%;
-            width: 100%;
+            margin: 0; padding: 0;
+            height: 100%; width: 100%;
             font-family: 'Rajdhani', sans-serif;
-            background-color: #050505;
-            overflow-x: hidden;
+            background-color: #050505; /* Negro puro de fondo */
+            overflow-x: hidden; /* Evita scroll horizontal */
         }
 
         /* --- FONDO ESTRUCTURAL --- */
@@ -28,44 +26,44 @@
             position: relative;
             min-height: 100vh;
             width: 100%;
+            /* IMAGEN DE FONDO */
             background-image: url('Fondo_PetScanIA.png'); 
             background-size: cover; 
             background-position: center center;
             display: flex;
             flex-direction: column;
-            justify-content: center; /* Centra verticalmente */
-            align-items: center; /* Centra horizontalmente */
+            justify-content: center;
+            align-items: center;
             text-align: center;
             padding: 20px;
         }
 
-        /* CAPA OSCURA (Vignette) */
+        /* CAPA OSCURA (Vignette) para que se lea el texto */
         .overlay {
             position: absolute;
             top: 0; left: 0; right: 0; bottom: 0;
-            background: radial-gradient(circle at center, rgba(0,0,0,0.4) 0%, rgba(0,0,0,0.9) 100%);
+            background: radial-gradient(circle at center, rgba(0,0,0,0.4) 0%, rgba(0,0,0,0.95) 100%);
             z-index: 1;
         }
 
-        /* --- CONTENIDO CENTRADO --- */
+        /* --- CONTENIDO --- */
         .contenido {
             position: relative;
             z-index: 10;
             width: 100%;
-            max-width: 900px; /* Ancho máximo controlado */
+            max-width: 900px;
             display: flex;
             flex-direction: column;
-            align-items: center; /* Asegura que todo hijo esté centrado */
-            justify-content: center;
+            align-items: center;
         }
 
         /* LOGO FLOTANTE */
         .logo-img {
-            width: 180px;
+            width: 170px; /* Tamaño ideal laptop */
             height: auto;
-            margin-bottom: 25px;
-            filter: drop-shadow(0 0 25px rgba(0, 210, 255, 0.6));
-            animation: float 4s ease-in-out infinite;
+            margin-bottom: 20px;
+            filter: drop-shadow(0 0 30px rgba(0, 210, 255, 0.5));
+            animation: float 5s ease-in-out infinite;
         }
 
         @keyframes float {
@@ -73,108 +71,142 @@
             50% { transform: translateY(-12px); }
         }
 
-        /* TÍTULOS */
+        /* TÍTULO PRINCIPAL */
         h1 {
-            font-size: 4.5rem;
-            margin: 0 0 15px 0;
-            line-height: 1.1;
+            font-size: 4.2rem;
+            margin: 0 0 10px 0;
+            line-height: 1;
             background: linear-gradient(to right, #00d2ff, #ffffff, #9b59b6);
             -webkit-background-clip: text;
             background-clip: text;
             color: transparent;
             text-transform: uppercase;
             font-weight: 800;
-            letter-spacing: 3px;
+            letter-spacing: 2px;
             text-shadow: 0 0 30px rgba(0, 210, 255, 0.4);
         }
 
+        /* SUBTÍTULO */
         p.subtitulo {
-            font-size: 1.5rem;
+            font-size: 1.4rem;
             color: #d1d5db;
-            margin-bottom: 50px;
+            margin-bottom: 45px;
             font-weight: 500;
             letter-spacing: 1px;
             max-width: 800px;
-            line-height: 1.5;
             text-shadow: 0 2px 4px rgba(0,0,0,0.8);
+            line-height: 1.4;
         }
 
-        /* --- TIMER --- */
-        .timer-container {
-            display: flex;
-            gap: 25px;
-            margin-bottom: 50px;
-            justify-content: center;
-            width: 100%;
-            flex-wrap: wrap;
-        }
-
-        .time-box {
-            background: rgba(13, 18, 30, 0.65);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-            border: 1px solid rgba(0, 210, 255, 0.35);
-            border-radius: 15px;
-            padding: 20px 10px;
-            flex: 1 1 140px;
-            max-width: 180px;
+        /* --- ESTRUCTURA DEL CONTADOR (Timer) --- */
+        .timer-wrapper {
             display: flex;
             flex-direction: column;
             align-items: center;
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
-            transition: transform 0.3s ease;
+            gap: 20px; /* Espacio entre la fila de Meses y la fila de Días */
+            margin-bottom: 50px;
+            width: 100%;
         }
 
-        .time-box:hover {
-            transform: translateY(-5px);
-            border-color: rgba(0, 210, 255, 0.9);
-            box-shadow: 0 0 30px rgba(0, 210, 255, 0.3);
+        /* NIVEL 1: CAJA DE MESES (DESTACADA) */
+        .months-box {
+            background: rgba(13, 18, 30, 0.8); /* Más oscuro */
+            border: 2px solid #9b59b6; /* Borde morado neón */
+            border-radius: 20px;
+            padding: 15px 50px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            box-shadow: 0 0 30px rgba(155, 89, 182, 0.25);
+            backdrop-filter: blur(10px);
+            min-width: 220px;
+            transform: scale(1.1); /* Un poco más grande que el resto */
         }
 
-        .time-number {
+        .months-number {
             font-size: 3.5rem;
             font-weight: 800;
             color: #fff;
             line-height: 1;
-            text-shadow: 0 0 15px rgba(0, 210, 255, 0.7);
+            text-shadow: 0 0 20px rgba(155, 89, 182, 0.8);
+        }
+
+        .months-label {
+            font-size: 1rem;
+            color: #d68bf7; /* Morado claro */
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            font-weight: 700;
+            margin-top: 5px;
+        }
+
+        /* NIVEL 2: CAJAS DE DETALLE (Días, Horas, Min, Seg) */
+        .detail-timer {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            flex-wrap: wrap;
+            width: 100%;
+        }
+
+        .time-box {
+            background: rgba(13, 18, 30, 0.6);
+            border: 1px solid rgba(0, 210, 255, 0.3); /* Borde cyan sutil */
+            border-radius: 15px;
+            padding: 15px 10px;
+            flex: 1; /* Crecen para ocupar espacio */
+            min-width: 85px;
+            max-width: 130px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            backdrop-filter: blur(5px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+        }
+
+        .time-number {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #fff;
+            text-shadow: 0 0 10px rgba(0, 210, 255, 0.5);
+            line-height: 1;
         }
 
         .time-label {
-            font-size: 0.9rem;
-            color: #00d2ff;
+            font-size: 0.8rem;
+            color: #00d2ff; /* Cyan */
             text-transform: uppercase;
-            letter-spacing: 2px;
-            margin-top: 10px;
-            font-weight: 700;
+            letter-spacing: 1px;
+            margin-top: 8px;
+            font-weight: 600;
         }
 
-        /* --- BOTÓN PRINCIPAL CENTRADO --- */
+        /* --- BOTÓN PRINCIPAL --- */
         .btn-lanzamiento {
             background: linear-gradient(135deg, #00d2ff 0%, #9b59b6 100%);
             color: white;
             padding: 20px 60px;
-            font-size: 1.3rem;
+            font-size: 1.2rem;
             border: none;
             border-radius: 50px;
             text-decoration: none;
             font-weight: 700;
-            letter-spacing: 1.5px;
-            box-shadow: 0 0 25px rgba(0, 210, 255, 0.5);
+            letter-spacing: 1px;
+            box-shadow: 0 0 25px rgba(0, 210, 255, 0.4);
             text-transform: uppercase;
             transition: all 0.3s ease;
             cursor: pointer;
-            display: inline-block; /* Asegura que se comporte como bloque para centrar */
-            margin-top: 20px; /* Espacio extra arriba */
+            display: inline-block;
         }
 
         .btn-lanzamiento:hover {
-            box-shadow: 0 0 50px rgba(0, 210, 255, 0.8);
+            box-shadow: 0 0 50px rgba(0, 210, 255, 0.7);
             transform: scale(1.05);
         }
 
-        /* --- ESTILOS DEL MODAL (POPUP) --- */
+        /* --- MODAL (POPUP) --- */
         .modal-overlay {
-            display: none;
+            display: none; /* Oculto inicio */
             position: fixed;
             z-index: 100;
             left: 0; top: 0;
@@ -183,48 +215,32 @@
             justify-content: center;
             align-items: center;
             backdrop-filter: blur(8px);
-            padding: 20px; /* Para que no pegue a los bordes en móvil */
+            padding: 20px;
         }
 
         .modal-content {
             background: rgba(15, 23, 42, 0.95);
             border: 1px solid #00d2ff;
             border-radius: 20px;
-            padding: 40px;
-            width: 100%; /* Ocupa el ancho disponible */
-            max-width: 450px; /* Pero no más de esto */
+            padding: 40px 30px;
+            width: 100%;
+            max-width: 450px;
             text-align: center;
             position: relative;
             box-shadow: 0 0 40px rgba(0, 210, 255, 0.2);
             animation: zoomIn 0.3s ease;
         }
-
-        @keyframes zoomIn {
-            from {transform: scale(0.8); opacity: 0;}
-            to {transform: scale(1); opacity: 1;}
-        }
+        @keyframes zoomIn { from {transform: scale(0.9); opacity: 0;} to {transform: scale(1); opacity: 1;} }
 
         .close-btn {
             position: absolute;
             top: 15px; right: 20px;
             color: #aaa;
-            font-size: 28px;
+            font-size: 30px;
             font-weight: bold;
             cursor: pointer;
-            transition: 0.3s;
         }
-        .close-btn:hover { color: #00d2ff; }
 
-        .modal-content h2 {
-            color: #fff;
-            margin-top: 0;
-            font-size: 2rem;
-            text-transform: uppercase;
-        }
-        
-        .modal-content p { color: #ccc; margin-bottom: 20px; }
-
-        /* Campos del formulario */
         .input-group input {
             width: 100%;
             padding: 15px;
@@ -236,53 +252,28 @@
             font-family: 'Rajdhani', sans-serif;
             font-size: 1.1rem;
             outline: none;
-            transition: 0.3s;
         }
+        
+        .btn-submit { width: 100%; margin-top: 15px; }
+        #msg-exito { color: #00ffaa; display: none; margin-top: 15px; font-weight: bold; }
 
-        .input-group input:focus {
-            border-color: #00d2ff;
-            box-shadow: 0 0 15px rgba(0, 210, 255, 0.2);
-        }
-
-        /* Botón del formulario */
-        .btn-submit {
-            width: 100%;
-            margin-top: 10px;
-            padding: 15px;
-            font-size: 1.2rem;
-        }
-
-        /* Mensaje de éxito */
-        #msg-exito {
-            color: #00ffaa;
-            font-weight: bold;
-            margin-top: 15px;
-            display: none;
-            text-shadow: 0 0 10px rgba(0, 255, 170, 0.4);
-        }
-
-        /* --- MEDIA QUERIES (Móvil Refinado) --- */
+        /* --- RESPONSIVE (CELULARES) --- */
         @media (max-width: 768px) {
-            .hero-container { padding: 15px; }
-            h1 { font-size: 2.8rem; letter-spacing: 1px; }
-            p.subtitulo { font-size: 1.1rem; margin-bottom: 35px; }
-            .logo-img { width: 140px; margin-bottom: 20px; }
+            h1 { font-size: 3rem; margin-bottom: 15px; }
+            p.subtitulo { font-size: 1.2rem; margin-bottom: 35px; }
+            .logo-img { width: 140px; margin-bottom: 25px; }
             
-            .timer-container { gap: 10px; margin-bottom: 40px; }
-            .time-box { flex: 1 1 40%; max-width: none; padding: 15px 5px; }
-            .time-number { font-size: 2.5rem; }
+            /* Ajustes del timer en móvil */
+            .timer-wrapper { gap: 15px; margin-bottom: 40px; }
+            .months-box { padding: 10px 40px; min-width: 180px; transform: scale(1); }
+            .months-number { font-size: 3rem; }
             
-            /* Botón móvil mejorado: No pega a los bordes */
-            .btn-lanzamiento { 
-                width: 90%; /* Ancho del 90% */
-                max-width: 350px; /* No muy ancho en tablets */
-                display: block; /* Comportamiento de bloque */
-                margin: 20px auto 0 auto; /* Centrado automático */
-                padding: 18px 0; 
-                font-size: 1.1rem; 
-            }
-            
-            .modal-content { padding: 30px 20px; }
+            .detail-timer { gap: 8px; }
+            .time-box { padding: 10px 5px; min-width: 70px; }
+            .time-number { font-size: 2rem; }
+            .time-label { font-size: 0.7rem; }
+
+            .btn-lanzamiento { width: 90%; font-size: 1.1rem; padding: 18px 0; }
         }
     </style>
 </head>
@@ -297,26 +288,35 @@
             <h1>PetScanIA 2.0</h1>
             <p class="subtitulo">
                 Revolucionando el cuidado veterinario con IA.<br>
-                La comunidad más grande llega este <strong>25 de Abril</strong>.
+                La comunidad más grande llega este <strong>25 de Abril de 2026</strong>.
             </p>
 
-            <div class="timer-container" id="countdown">
-                <div class="time-box">
-                    <span class="time-number" id="days">00</span>
-                    <span class="time-label">Días</span>
+            <div class="timer-wrapper" id="countdown-ui">
+                
+                <div class="months-box">
+                    <span class="months-number" id="months">0</span>
+                    <span class="months-label">MESES</span>
                 </div>
-                <div class="time-box">
-                    <span class="time-number" id="hours">00</span>
-                    <span class="time-label">Horas</span>
+
+                <div class="detail-timer">
+                    <div class="time-box">
+                        <span class="time-number" id="days">00</span>
+                        <span class="time-label">DÍAS</span>
+                    </div>
+                    <div class="time-box">
+                        <span class="time-number" id="hours">00</span>
+                        <span class="time-label">HORAS</span>
+                    </div>
+                    <div class="time-box">
+                        <span class="time-number" id="minutes">00</span>
+                        <span class="time-label">MIN</span>
+                    </div>
+                    <div class="time-box">
+                        <span class="time-number" id="seconds">00</span>
+                        <span class="time-label">SEG</span>
+                    </div>
                 </div>
-                <div class="time-box">
-                    <span class="time-number" id="minutes">00</span>
-                    <span class="time-label">Min</span>
-                </div>
-                <div class="time-box">
-                    <span class="time-number" id="seconds">00</span>
-                    <span class="time-label">Seg</span>
-                </div>
+
             </div>
 
             <button class="btn-lanzamiento" id="openModalBtn">Notificarme el lanzamiento</button>
@@ -326,8 +326,8 @@
     <div id="modal-suscription" class="modal-overlay">
         <div class="modal-content">
             <span class="close-btn">&times;</span>
-            <h2>¡Únete a la lista!</h2>
-            <p>Recibe acceso anticipado y novedades exclusivas.</p>
+            <h2 style="color:#fff; margin-top:0;">¡ÚNETE AHORA!</h2>
+            <p style="color:#ccc;">Recibe acceso anticipado y novedades.</p>
             
             <form name="submit-to-google-sheet" class="input-group">
                 <input type="text" name="Nombre Mascota" placeholder="Nombre de tu Mascota" required>
@@ -339,47 +339,67 @@
     </div>
 
     <script>
-        // ----------------------------------------------------
-        // 1. CONFIGURACIÓN DEL SCRIPT DE GOOGLE SHEETS
-        // ----------------------------------------------------
+        // 1. TU URL DE GOOGLE SHEETS
         const scriptURL = 'https://script.google.com/macros/s/AKfycbzQlnTCnOcCq7wbsL3aP8HVdkUSXvliN987wvQd-hvkMteuOxoZ1HpOWYNQVItiiqp8/exec'; 
-        // ----------------------------------------------------
 
-        // 2. LÓGICA DEL RELOJ (Countdown)
-        const launchDate = new Date("April 25, 2026 00:00:00").getTime();
+        // 2. LÓGICA DEL RELOJ (MESES + DÍAS)
+        const launchDate = new Date("April 25, 2026 00:00:00");
 
-        const timer = setInterval(function() {
-            const now = new Date().getTime();
-            const distance = launchDate - now;
+        function updateTimer() {
+            const now = new Date();
+            
+            if (now >= launchDate) {
+                document.getElementById("countdown-ui").innerHTML = "<h2 style='color:#fff; font-size:2rem; text-shadow:0 0 20px cyan;'>¡YA ESTAMOS EN VIVO!</h2>";
+                return;
+            }
 
-            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+            // Cálculo aproximado de Meses
+            let months = (launchDate.getFullYear() - now.getFullYear()) * 12;
+            months -= now.getMonth();
+            months += launchDate.getMonth();
+            
+            // Ajuste fino si el día actual es mayor al día objetivo
+            if (launchDate.getDate() < now.getDate()) {
+                months--;
+            }
 
+            // Crear fecha temporal sumando los meses para calcular la diferencia restante exacta
+            let tempDate = new Date(now);
+            tempDate.setMonth(now.getMonth() + months);
+            
+            let diff = launchDate - tempDate;
+
+            // Evitar negativos en milisegundos por desfases de días
+            if (diff < 0) { 
+                // Ajuste de seguridad
+                diff = 0; 
+            }
+
+            const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+
+            // Pintar en HTML
+            document.getElementById("months").innerText = months < 0 ? 0 : months;
             document.getElementById("days").innerText = days < 10 ? "0" + days : days;
             document.getElementById("hours").innerText = hours < 10 ? "0" + hours : hours;
             document.getElementById("minutes").innerText = minutes < 10 ? "0" + minutes : minutes;
             document.getElementById("seconds").innerText = seconds < 10 ? "0" + seconds : seconds;
+        }
 
-            if (distance < 0) {
-                clearInterval(timer);
-                document.getElementById("countdown").innerHTML = "<h2>¡YA ESTAMOS EN VIVO!</h2>";
-            }
-        }, 1000);
+        setInterval(updateTimer, 1000);
+        updateTimer(); // Ejecutar inmediato
 
-        // 3. LÓGICA DEL MODAL (Abrir/Cerrar)
+        // 3. MODAL Y ENVÍO DE DATOS
         const modal = document.getElementById("modal-suscription");
         const btnOpen = document.getElementById("openModalBtn");
         const btnClose = document.querySelector(".close-btn");
 
         btnOpen.addEventListener("click", () => { modal.style.display = "flex"; });
         btnClose.addEventListener("click", () => { modal.style.display = "none"; });
-        window.addEventListener("click", (e) => {
-            if (e.target == modal) { modal.style.display = "none"; }
-        });
+        window.addEventListener("click", (e) => { if (e.target == modal) modal.style.display = "none"; });
 
-        // 4. LÓGICA DE ENVÍO DE DATOS
         const form = document.forms['submit-to-google-sheet'];
         const msg = document.getElementById("msg-exito");
 
@@ -387,8 +407,6 @@
             e.preventDefault();
             const btn = form.querySelector('.btn-submit');
             const originalText = btn.innerText;
-            
-            // Feedback visual
             btn.innerText = "Enviando...";
             btn.disabled = true;
 
@@ -397,7 +415,6 @@
                     msg.style.display = "block";
                     form.reset();
                     btn.innerText = "¡Listo!";
-                    // Cerrar modal automáticamente después de 2.5 segundos
                     setTimeout(() => {
                         modal.style.display = "none";
                         btn.innerText = originalText;
@@ -407,7 +424,7 @@
                 })
                 .catch(error => {
                     console.error('Error!', error.message);
-                    btn.innerText = "Error, intenta de nuevo";
+                    btn.innerText = "Reintentar";
                     btn.disabled = false;
                 });
         });
