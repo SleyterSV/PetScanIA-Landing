@@ -15,10 +15,11 @@
         * { box-sizing: border-box; }
         body, html {
             margin: 0; padding: 0;
-            height: 100%; width: 100%;
+            width: 100%;
             font-family: 'Rajdhani', sans-serif;
             background-color: #050505;
             overflow-x: hidden;
+            scroll-behavior: smooth;
         }
 
         /* --- FONDO ESTRUCTURAL --- */
@@ -58,7 +59,7 @@
 
         /* LOGO */
         .logo-img {
-            width: 150px; /* Tamaño optimizado */
+            width: 150px; 
             height: auto;
             margin-bottom: 15px;
             filter: drop-shadow(0 0 30px rgba(0, 210, 255, 0.5));
@@ -101,10 +102,9 @@
             width: 100%;
         }
 
-        /* NIVEL 1: MESES (GRANDE Y DESTACADO) */
         .months-box {
             background: rgba(13, 18, 30, 0.75);
-            border: 2px solid #bf00ff; /* Borde Neón Morado */
+            border: 2px solid #bf00ff;
             border-radius: 15px;
             padding: 10px 50px;
             display: flex;
@@ -132,7 +132,6 @@
             margin-top: 5px;
         }
 
-        /* NIVEL 2: DETALLES (DÍAS, HORAS...) */
         .detail-timer {
             display: flex;
             gap: 15px;
@@ -194,11 +193,149 @@
             transform: scale(1.05);
         }
 
+        /* --- NUEVA SECCIÓN: FEATURES PETSCANIA --- */
+        .features-section {
+            padding: 80px 20px;
+            background-color: #050505; /* Fondo negro profundo para conectar con el hero */
+            color: white;
+            text-align: center;
+            border-top: 1px solid rgba(0, 210, 255, 0.2);
+            position: relative;
+        }
+        
+        /* Luz de fondo sutil para la sección */
+        .features-section::before {
+            content: '';
+            position: absolute;
+            top: -150px; left: 50%;
+            transform: translateX(-50%);
+            width: 600px; height: 300px;
+            background: radial-gradient(ellipse, rgba(155, 89, 182, 0.15) 0%, rgba(0,0,0,0) 70%);
+            z-index: 0;
+            pointer-events: none;
+        }
+
+        .features-container {
+            max-width: 1100px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 2;
+        }
+
+        .features-title {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            background: linear-gradient(90deg, #00D2FF, #bf00ff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .features-desc {
+            font-size: 1.2rem;
+            color: #94A3B8;
+            line-height: 1.6;
+            margin-bottom: 60px;
+            font-weight: 500;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .cards-wrapper {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 30px;
+            margin-bottom: 80px;
+        }
+
+        .feature-card {
+            flex: 1 1 300px;
+            background: rgba(13, 18, 30, 0.8);
+            padding: 40px 30px;
+            border-radius: 20px;
+            border: 1px solid rgba(0, 210, 255, 0.2);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            transition: all 0.4s ease;
+            backdrop-filter: blur(10px);
+        }
+
+        .feature-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(0, 210, 255, 0.2);
+            border-color: rgba(0, 210, 255, 0.6);
+        }
+
+        .feature-card.purple {
+            background: rgba(20, 15, 35, 0.8);
+            border-color: rgba(191, 0, 255, 0.2);
+        }
+
+        .feature-card.purple:hover {
+            box-shadow: 0 15px 40px rgba(191, 0, 255, 0.2);
+            border-color: rgba(191, 0, 255, 0.6);
+        }
+
+        .feature-icon {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+        }
+
+        .feature-card h3 {
+            color: #00D2FF;
+            margin: 0 0 15px 0;
+            font-size: 1.6rem;
+            font-weight: 700;
+        }
+
+        .feature-card.purple h3 {
+            color: #e0aaff;
+        }
+
+        .feature-card p {
+            color: #CBD5E1;
+            font-size: 1.05rem;
+            line-height: 1.6;
+            margin: 0;
+        }
+
+        .showcase-wrapper {
+            position: relative;
+            border-radius: 20px;
+            overflow: hidden;
+            border: 1px solid rgba(255,255,255,0.1);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.8);
+            margin-top: 20px;
+            background-color: #0a0a0a;
+        }
+
+        .showcase-wrapper img {
+            width: 100%;
+            height: auto;
+            display: block;
+            opacity: 0.9;
+            transition: opacity 0.3s;
+        }
+        .showcase-wrapper:hover img {
+            opacity: 1;
+        }
+
+        .showcase-overlay {
+            position: absolute;
+            bottom: 0; left: 0; right: 0;
+            height: 150px;
+            background: linear-gradient(to top, #050505, transparent);
+            pointer-events: none;
+        }
+
         /* --- MODAL --- */
         .modal-overlay {
             display: none;
             position: fixed;
-            z-index: 100;
+            z-index: 1000;
             left: 0; top: 0;
             width: 100%; height: 100%;
             background-color: rgba(0,0,0,0.85);
@@ -229,7 +366,9 @@
             font-size: 28px;
             font-weight: bold;
             cursor: pointer;
+            transition: color 0.3s;
         }
+        .close-btn:hover { color: #fff; }
 
         .input-group input {
             width: 100%;
@@ -242,7 +381,9 @@
             font-family: 'Rajdhani', sans-serif;
             font-size: 1rem;
             outline: none;
+            transition: border-color 0.3s;
         }
+        .input-group input:focus { border-color: #00d2ff; }
         
         .btn-submit { width: 100%; margin-top: 10px; }
         #msg-exito { color: #00ffaa; display: none; margin-top: 15px; font-weight: bold; }
@@ -258,6 +399,9 @@
             .time-box { padding: 8px 2px; min-width: 65px; }
             .time-number { font-size: 1.6rem; }
             .btn-lanzamiento { width: 90%; font-size: 1rem; padding: 16px 0; }
+            
+            .features-title { font-size: 2.2rem; }
+            .feature-card { padding: 30px 20px; }
         }
     </style>
 </head>
@@ -276,36 +420,55 @@
             </p>
 
             <div class="timer-wrapper" id="countdown-ui">
-                
                 <div class="months-box">
                     <span class="months-number" id="months">0</span>
                     <span class="months-label">MESES</span>
                 </div>
-
                 <div class="detail-timer">
-                    <div class="time-box">
-                        <span class="time-number" id="days">00</span>
-                        <span class="time-label">DÍAS</span>
-                    </div>
-                    <div class="time-box">
-                        <span class="time-number" id="hours">00</span>
-                        <span class="time-label">HORAS</span>
-                    </div>
-                    <div class="time-box">
-                        <span class="time-number" id="minutes">00</span>
-                        <span class="time-label">MIN</span>
-                    </div>
-                    <div class="time-box">
-                        <span class="time-number" id="seconds">00</span>
-                        <span class="time-label">SEG</span>
-                    </div>
+                    <div class="time-box"><span class="time-number" id="days">00</span><span class="time-label">DÍAS</span></div>
+                    <div class="time-box"><span class="time-number" id="hours">00</span><span class="time-label">HORAS</span></div>
+                    <div class="time-box"><span class="time-number" id="minutes">00</span><span class="time-label">MIN</span></div>
+                    <div class="time-box"><span class="time-number" id="seconds">00</span><span class="time-label">SEG</span></div>
                 </div>
-
             </div>
 
             <button class="btn-lanzamiento" id="openModalBtn">Notificarme el lanzamiento</button>
         </div>
     </div>
+
+    <section class="features-section">
+        <div class="features-container">
+            <h2 class="features-title">El Ecosistema Definitivo</h2>
+            <p class="features-desc">
+                PetScanIA 2.0 no es solo una app, es tu aliado tecnológico. Conectamos la inteligencia artificial más avanzada del mercado con las mejores clínicas veterinarias para cuidar la salud de tu mascota.
+            </p>
+
+            <div class="cards-wrapper">
+                <div class="feature-card">
+                    <div class="feature-icon">🔍</div>
+                    <h3>IA Diagnóstico</h3>
+                    <p>Sube una foto y nuestra IA entrenada evaluará posibles afecciones dermatológicas y oculares con alta precisión al instante.</p>
+                </div>
+
+                <div class="feature-card purple">
+                    <div class="feature-icon">💬</div>
+                    <h3>Chatbot 24/7</h3>
+                    <p>Un asistente veterinario inteligente listo para resolver dudas sobre síntomas, nutrición y primeros auxilios de tu mascota.</p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">🏥</div>
+                    <h3>Red Aliada</h3>
+                    <p>Encuentra clínicas certificadas cerca de ti, revisa sus precios en tiempo real y solicita derivaciones directas desde la app.</p>
+                </div>
+            </div>
+
+            <div class="showcase-wrapper">
+                <img src="Showcase_PetScanIA.png" alt="Muestra de la App PetScanIA 2.0">
+                <div class="showcase-overlay"></div>
+            </div>
+        </div>
+    </section>
 
     <div id="modal-suscription" class="modal-overlay">
         <div class="modal-content">
@@ -326,7 +489,7 @@
         // 1. TU URL DE GOOGLE SHEETS
         const scriptURL = 'https://script.google.com/macros/s/AKfycbzQlnTCnOcCq7wbsL3aP8HVdkUSXvliN987wvQd-hvkMteuOxoZ1HpOWYNQVItiiqp8/exec'; 
 
-        // 2. LÓGICA DEL RELOJ (MESES + DÍAS)
+        // 2. LÓGICA DEL RELOJ
         const launchDate = new Date("April 25, 2026 00:00:00");
 
         function updateTimer() {
@@ -337,29 +500,23 @@
                 return;
             }
 
-            // Cálculo de Meses
             let months = (launchDate.getFullYear() - now.getFullYear()) * 12;
             months -= now.getMonth();
             months += launchDate.getMonth();
             
-            // Ajuste si no ha pasado el día del mes
-            if (launchDate.getDate() < now.getDate()) {
-                months--;
-            }
+            if (launchDate.getDate() < now.getDate()) months--;
 
-            // Fecha temporal sumando los meses para sacar el resto de días
             let tempDate = new Date(now);
             tempDate.setMonth(now.getMonth() + months);
             
             let diff = launchDate - tempDate;
-            if (diff < 0) diff = 0; // Seguridad
+            if (diff < 0) diff = 0;
 
             const days = Math.floor(diff / (1000 * 60 * 60 * 24));
             const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
             const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
             const seconds = Math.floor((diff % (1000 * 60)) / 1000);
 
-            // Actualizar HTML
             document.getElementById("months").innerText = months < 0 ? 0 : months;
             document.getElementById("days").innerText = days < 10 ? "0" + days : days;
             document.getElementById("hours").innerText = hours < 10 ? "0" + hours : hours;
@@ -368,9 +525,9 @@
         }
 
         setInterval(updateTimer, 1000);
-        updateTimer(); // Ejecutar inmediato
+        updateTimer();
 
-        // 3. MODAL Y ENVÍO DE DATOS
+        // 3. MODAL Y ENVÍO
         const modal = document.getElementById("modal-suscription");
         const btnOpen = document.getElementById("openModalBtn");
         const btnClose = document.querySelector(".close-btn");
@@ -408,6 +565,5 @@
                 });
         });
     </script>
-
 </body>
 </html>
