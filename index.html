@@ -108,7 +108,7 @@
             display: flex;
             gap: 40px;
             align-items: center;
-            margin-top: 60px; /* Espacio para los botones superiores */
+            margin-top: 100px; /* Espacio para los botones superiores y el texto */
         }
 
         /* PANEL IZQUIERDO */
@@ -233,13 +233,6 @@
             width: 100%;
         }
 
-        .detail-timer {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 10px;
-            width: 100%;
-        }
-
         /* --- BOTÓN NOTIFICAR --- */
         .btn-lanzamiento {
             background: linear-gradient(135deg, #00d2ff 0%, #9b59b6 100%);
@@ -315,7 +308,7 @@
         @media (max-width: 992px) {
             .hero-layout {
                 flex-direction: column;
-                padding-top: 120px; /* Deja espacio para los botones arriba */
+                padding-top: 50px;
                 padding-bottom: 40px;
             }
             .left-panel, .right-panel { width: 100%; }
@@ -329,17 +322,20 @@
             
             /* Ajuste de los botones superiores para celular */
             .top-action-bar {
-                flex-direction: column; /* Apila Android y Apple */
+                flex-direction: column;
                 align-items: center;
                 gap: 10px;
                 top: 15px;
             }
             .btn-os {
-                width: 90%; /* Botones anchos en celular */
+                width: 90%;
                 max-width: 300px;
                 padding: 15px 20px;
             }
-            .hero-layout { margin-top: 80px; }
+            .android-instruction {
+                margin-top: 135px !important;
+            }
+            .hero-layout { margin-top: 160px; }
         }
     </style>
 </head>
@@ -349,12 +345,18 @@
         <div class="overlay"></div>
 
         <div class="top-action-bar">
-            <a href="descargas/petscania-v2.apk" download class="btn-os btn-android">
+            <a href="descargas/PetScanIA.apk" download class="btn-os btn-android">
                 <i class="fa-brands fa-android"></i> Instalar Android
             </a>
             <a href="/app/" class="btn-os btn-apple">
                 <i class="fa-brands fa-apple"></i> Abrir en iPhone
             </a>
+        </div>
+
+        <div class="android-instruction" style="width: 100%; text-align: center; margin-top: 85px; position: absolute; top: 0; z-index: 50;">
+            <p style="color: #ccc; font-size: 0.85rem; text-shadow: 0 1px 2px #000; padding: 0 20px; line-height: 1.4;">
+                <strong>Android:</strong> Al descargar, abre el archivo y acepta instalar desde <em>"Orígenes desconocidos"</em> si se solicita.
+            </p>
         </div>
 
         <div class="hero-layout">
