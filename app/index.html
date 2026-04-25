@@ -1,39 +1,23 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <base href="/PetScanIA-Landing/app/">
+  <base href="./">
 
   <meta charset="UTF-8">
   <meta content="IE=Edge" http-equiv="X-UA-Compatible">
-  <meta name="description" content="PetScanIA 2.0">
+  <meta name="description" content="PetScanIA App">
 
   <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB7pj_HXCmlMNnoaPnN8WhNrFU0Or3ZYlQ"></script>
 
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
-  <meta name="apple-mobile-web-app-title" content="petscania">
+  <meta name="apple-mobile-web-app-title" content="PetScanIA">
   <link rel="apple-touch-icon" href="icons/Icon-192.png">
+
   <link rel="icon" type="image/png" href="favicon.png"/>
 
-  <title>petscania</title>
+  <title>PetScanIA App</title>
   <link rel="manifest" href="manifest.json">
-
-  <script>
-    // Script de ayuda para asegurar que las rutas relativas funcionen con los assets
-    window.addEventListener('load', function(ev) {
-      // Download main.dart.js
-      _flutter.loader.loadEntrypoint({
-        serviceWorker: {
-          serviceWorkerVersion: serviceWorkerVersion,
-        },
-        onEntrypointLoaded: function(engineInitializer) {
-          engineInitializer.initializeEngine().then(function(appRunner) {
-            appRunner.runApp();
-          });
-        }
-      });
-    });
-  </script>
 </head>
 <body>
   <script src="flutter_bootstrap.js" async></script>
