@@ -3,236 +3,161 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>PetScanIA 2.0 - ¡Ya estamos en vivo!</title>
+    <title>PetScanIA 2.0 | Tecnología Veterinaria con IA</title>
     <link rel="icon" href="Logo_PetScanIA.png" type="image/png">
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@500;600;700;800&family=Inter:wght@400;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
     <style>
-        * { box-sizing: border-box; }
+        :root {
+            --cyan: #00d2ff;
+            --purple: #9b59b6;
+            --green: #00ffaa;
+            --dark: #050505;
+            --glass: rgba(13, 18, 30, 0.7);
+        }
+
+        * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+        
         body, html {
             margin: 0; padding: 0;
-            width: 100%;
-            font-family: 'Rajdhani', sans-serif;
-            background-color: #050505;
-            overflow-x: hidden;
+            width: 100%; font-family: 'Rajdhani', sans-serif;
+            background-color: var(--dark);
+            color: white; overflow-x: hidden;
             scroll-behavior: smooth;
         }
 
+        /* --- BACKGROUND --- */
         .hero-container {
             position: relative;
             min-height: 100vh;
-            width: 100%;
             background-image: url('Fondo_PetScanIA.png'); 
-            background-size: cover; 
-            background-position: center center;
-            display: flex;
-            justify-content: center;
-            align-items: center;
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            display: flex; flex-direction: column; align-items: center;
             padding: 20px;
         }
 
         .overlay {
-            position: absolute;
-            top: 0; left: 0; right: 0; bottom: 0;
-            background: radial-gradient(circle at center, rgba(0,0,0,0.3) 0%, rgba(0,0,0,0.95) 100%);
+            position: absolute; top: 0; left: 0; right: 0; bottom: 0;
+            background: radial-gradient(circle at center, rgba(0,0,0,0.2) 0%, rgba(0,0,0,0.9) 100%);
             z-index: 1;
         }
 
-        .top-action-bar {
-            position: absolute;
-            top: 30px;
-            left: 0;
-            width: 100%;
-            display: flex;
-            justify-content: center;
-            gap: 20px;
-            z-index: 50;
-            padding: 0 20px;
+        /* --- HEADER & CTAs --- */
+        .cta-header {
+            position: relative; z-index: 50;
+            width: 100%; max-width: 600px;
+            margin-top: 20px; text-align: center;
         }
 
-        .btn-os {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 10px;
-            padding: 12px 25px;
-            border-radius: 50px;
-            font-size: 1.1rem;
-            font-weight: 700;
-            text-transform: uppercase;
-            text-decoration: none;
-            letter-spacing: 1px;
-            transition: all 0.3s ease;
-            backdrop-filter: blur(5px);
+        .download-box {
+            display: grid; grid-template-columns: 1fr 1fr; gap: 15px;
+            background: var(--glass);
+            padding: 20px; border-radius: 24px;
+            border: 1px solid rgba(255,255,255,0.1);
+            backdrop-filter: blur(15px);
+            box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+        }
+
+        .btn-main {
+            display: flex; flex-direction: column; align-items: center;
+            justify-content: center; gap: 8px;
+            padding: 15px; border-radius: 16px;
+            text-decoration: none; font-weight: 800;
+            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            text-transform: uppercase; letter-spacing: 1px;
         }
 
         .btn-android {
-            background: rgba(0, 255, 170, 0.15);
-            color: #00ffaa;
-            border: 1px solid #00ffaa;
-            box-shadow: 0 0 15px rgba(0, 255, 170, 0.3);
+            background: var(--green); color: #000;
+            box-shadow: 0 0 20px rgba(0, 255, 170, 0.3);
         }
-        .btn-android:hover {
-            background: rgba(0, 255, 170, 0.3);
-            box-shadow: 0 0 30px rgba(0, 255, 170, 0.6);
-            transform: translateY(-2px);
-        }
+        .btn-android:hover { transform: scale(1.05); box-shadow: 0 0 40px rgba(0, 255, 170, 0.6); }
 
         .btn-apple {
-            background: rgba(255, 255, 255, 0.1);
-            color: #ffffff;
-            border: 1px solid #ffffff;
-            box-shadow: 0 0 15px rgba(255, 255, 255, 0.2);
+            background: rgba(255, 255, 255, 0.1); color: #fff;
+            border: 1px solid #fff;
         }
-        .btn-apple:hover {
-            background: rgba(255, 255, 255, 0.2);
-            box-shadow: 0 0 30px rgba(255, 255, 255, 0.5);
-            transform: translateY(-2px);
+        .btn-apple:hover { background: rgba(255, 255, 255, 0.2); transform: scale(1.05); }
+
+        .btn-main i { font-size: 1.8rem; }
+        .btn-main span { font-size: 0.8rem; opacity: 0.9; }
+
+        /* --- HERO CONTENT --- */
+        .main-content {
+            position: relative; z-index: 10;
+            width: 100%; max-width: 1000px;
+            display: flex; flex-direction: column; align-items: center;
+            text-align: center; margin-top: 40px;
         }
 
-        .android-instruction {
-            width: 100%;
-            text-align: center;
-            margin-top: 85px;
-            position: absolute;
-            top: 0;
-            z-index: 50;
+        .logo-main {
+            width: 110px; margin-bottom: 20px;
+            filter: drop-shadow(0 0 30px var(--cyan));
+            animation: float 4s ease-in-out infinite;
         }
 
-        .hero-layout {
-            position: relative;
-            z-index: 10;
-            width: 100%;
-            max-width: 1400px;
-            display: flex;
-            gap: 40px;
-            align-items: center;
-            margin-top: 120px;
-        }
-
-        .left-panel {
-            flex: 3;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            text-align: center;
-        }
-
-        .right-panel {
-            flex: 1;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            background: rgba(13, 18, 30, 0.6);
-            padding: 40px 20px;
-            border-radius: 20px;
-            border: 1px solid rgba(0, 210, 255, 0.2);
-            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
-            backdrop-filter: blur(10px);
-            min-width: 300px;
-        }
-
-        .logo-img {
-            width: 120px; 
-            height: auto;
-            margin-bottom: 15px;
-            filter: drop-shadow(0 0 30px rgba(0, 210, 255, 0.5));
-            animation: float 5s ease-in-out infinite;
-        }
-        @keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
+        @keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-15px); } }
 
         h1 {
-            font-size: 3.5rem;
-            margin: 0 0 10px 0;
-            line-height: 1;
-            background: linear-gradient(to right, #00d2ff, #ffffff, #9b59b6);
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-            text-transform: uppercase;
-            font-weight: 800;
-            letter-spacing: 2px;
-            text-shadow: 0 0 30px rgba(0, 210, 255, 0.4);
+            font-size: 3.5rem; margin: 0; line-height: 0.9;
+            background: linear-gradient(to right, #fff, var(--cyan), var(--purple));
+            -webkit-background-clip: text; background-clip: text; color: transparent;
+            text-transform: uppercase; font-weight: 900;
         }
 
-        p.subtitulo {
-            font-size: 1.2rem;
-            color: #d1d5db;
-            margin-bottom: 30px;
-            font-weight: 500;
-            letter-spacing: 1px;
-            max-width: 800px;
-            text-shadow: 0 2px 4px rgba(0,0,0,0.8);
+        .badge-live {
+            background: linear-gradient(90deg, var(--cyan), var(--purple));
+            padding: 8px 20px; border-radius: 50px;
+            margin: 25px 0; font-weight: 800; font-size: 1.2rem;
+            box-shadow: 0 0 30px rgba(0, 210, 255, 0.5);
+            animation: pulse 2s infinite;
         }
 
-        .cards-wrapper {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 20px;
-            width: 100%;
+        @keyframes pulse { 0% { transform: scale(1); } 50% { transform: scale(1.05); } 100% { transform: scale(1); } }
+
+        /* --- FEATURES GRID --- */
+        .features-grid {
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px; width: 100%; margin: 40px 0;
         }
 
-        .feature-card {
-            flex: 1;
-            min-width: 220px;
-            background: rgba(13, 18, 30, 0.8);
-            padding: 25px 20px;
-            border-radius: 15px;
-            border: 1px solid rgba(0, 210, 255, 0.2);
-            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
-            transition: all 0.4s ease;
-            backdrop-filter: blur(10px);
-            text-align: center;
+        .feat-card {
+            background: var(--glass);
+            padding: 30px; border-radius: 20px;
+            border: 1px solid rgba(0, 210, 255, 0.1);
+            transition: 0.3s;
         }
 
-        .feature-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 15px 40px rgba(0, 210, 255, 0.2);
-            border-color: rgba(0, 210, 255, 0.6);
+        .feat-card:hover {
+            border-color: var(--cyan);
+            background: rgba(0, 210, 255, 0.05);
+            transform: translateY(-10px);
         }
 
-        .feature-card.purple {
-            background: rgba(20, 15, 35, 0.8);
-            border-color: rgba(191, 0, 255, 0.2);
+        .feat-card i { font-size: 2.5rem; color: var(--cyan); margin-bottom: 15px; }
+        .feat-card h3 { font-size: 1.5rem; margin: 10px 0; color: #fff; }
+        .feat-card p { font-family: 'Inter', sans-serif; font-size: 0.95rem; color: #aaa; line-height: 1.6; }
+
+        /* --- FOOTER --- */
+        footer {
+            position: relative; z-index: 10;
+            width: 100%; padding: 40px 20px;
+            background: rgba(0,0,0,0.8);
+            text-align: center; border-top: 1px solid rgba(255,255,255,0.05);
         }
 
-        .feature-icon { font-size: 2.5rem; margin-bottom: 15px; }
-        .feature-card h3 { color: #00D2FF; margin: 0 0 10px 0; font-size: 1.3rem; font-weight: 700; }
-        .feature-card.purple h3 { color: #e0aaff; }
-        .feature-card p { color: #CBD5E1; font-size: 0.95rem; line-height: 1.5; margin: 0; }
+        .team-info { font-size: 0.9rem; color: #666; margin-top: 10px; }
 
-        .btn-lanzamiento {
-            background: linear-gradient(135deg, #00d2ff 0%, #9b59b6 100%);
-            color: white;
-            padding: 15px 30px;
-            font-size: 1rem;
-            border: none;
-            border-radius: 50px;
-            text-decoration: none;
-            font-weight: 700;
-            letter-spacing: 1px;
-            box-shadow: 0 0 25px rgba(0, 210, 255, 0.4);
-            text-transform: uppercase;
-            transition: all 0.3s ease;
-            cursor: pointer;
-            width: 100%;
-        }
-
-        @media (max-width: 992px) {
-            .hero-layout { flex-direction: column; padding-top: 50px; }
-            .left-panel, .right-panel { width: 100%; }
-        }
-
+        /* --- RESPONSIVE --- */
         @media (max-width: 768px) {
-            h1 { font-size: 2.5rem; }
-            .top-action-bar { flex-direction: column; align-items: center; gap: 10px; }
-            .btn-os { width: 90%; max-width: 300px; }
-            .hero-layout { margin-top: 180px; }
+            h1 { font-size: 2.8rem; }
+            .download-box { grid-template-columns: 1fr; }
+            .main-content { margin-top: 20px; }
         }
     </style>
 </head>
@@ -241,61 +166,64 @@
     <div class="hero-container">
         <div class="overlay"></div>
 
-        <div class="top-action-bar">
-            <a href="https://github.com/SleyterSV/PetScanIA-Landing/releases/download/v2.0/PetScanIA.apk" class="btn-os btn-android">
-                <i class="fa-brands fa-android"></i> Instalar Android
-            </a>
-            <a href="/app/" class="btn-os btn-apple">
-                <i class="fa-brands fa-apple"></i> Abrir en iPhone
-            </a>
-        </div>
-
-        <div class="android-instruction">
-            <p style="color: #ccc; font-size: 0.85rem; text-shadow: 0 1px 2px #000; padding: 0 20px;">
-                <strong>Android:</strong> Tras descargar, acepta instalar desde <em>"Orígenes desconocidos"</em>.
+        <header class="cta-header">
+            <div class="download-box">
+                <a href="https://github.com/SleyterSV/PetScanIA-Landing/releases/download/v2.0/PetScanIA.apk" class="btn-main btn-android">
+                    <i class="fa-brands fa-android"></i>
+                    INSTALAR ANDROID
+                    <span>v2.0 Stable (APK)</span>
+                </a>
+                <a href="/app/" class="btn-main btn-apple">
+                    <i class="fa-brands fa-apple"></i>
+                    ABRIR EN IPHONE
+                    <span>Acceso Directo Web</span>
+                </a>
+            </div>
+            <p style="color: var(--green); font-size: 0.8rem; margin-top: 15px; font-weight: 700;">
+                <i class="fa-solid fa-shield-halved"></i> Verificado y libre de virus
             </p>
-        </div>
+        </header>
 
-        <div class="hero-layout">
-            <div class="left-panel">
-                <img src="Logo_PetScanIA.png" alt="PetScanIA Logo" class="logo-img">
-                <h1>PetScanIA 2.0</h1>
-                <p class="subtitulo">Revolucionando el cuidado veterinario con IA.<br>La comunidad más grande llega este 25 de Abril de 2026.</p>
+        <main class="main-content">
+            <img src="Logo_PetScanIA.png" alt="PetScanIA 2.0" class="logo-main">
+            <h1>PETSCANIA 2.0</h1>
+            
+            <div class="badge-live">¡YA ESTAMOS EN VIVO!</div>
+            
+            <p style="font-family: 'Inter', sans-serif; max-width: 600px; color: #ccc; line-height: 1.6;">
+                La plataforma de salud veterinaria más avanzada del Perú. 
+                Diagnóstico con IA, atención 24/7 y la red de clínicas más grande.
+            </p>
 
-                <div class="cards-wrapper">
-                    <div class="feature-card">
-                        <div class="feature-icon">🔍</div>
-                        <h3>IA Diagnóstico</h3>
-                        <p>Sube una foto y nuestra IA evaluará posibles afecciones.</p>
-                    </div>
-                    <div class="feature-card purple">
-                        <div class="feature-icon">💬</div>
-                        <h3>Chatbot 24/7</h3>
-                        <p>Asistente inteligente para dudas y primeros auxilios.</p>
-                    </div>
-                    <div class="feature-card">
-                        <div class="feature-icon">🏥</div>
-                        <h3>Red Aliada</h3>
-                        <p>Clínicas certificadas y precios preferenciales.</p>
-                    </div>
+            <div class="features-grid">
+                <div class="feat-card">
+                    <i class="fa-solid fa-microscope"></i>
+                    <h3>Escáner Médico IA</h3>
+                    <p>Detecta afecciones cutáneas y síntomas visibles solo con una fotografía. Precisión respaldada por redes neuronales.</p>
+                </div>
+                <div class="feat-card">
+                    <i class="fa-solid fa-comment-medical" style="color: var(--purple);"></i>
+                    <h3 style="color: var(--purple);">VetIA Asistente</h3>
+                    <p>Nuestro chatbot inteligente disponible 24/7 para triaje inmediato y primeros auxilios antes de llegar a la clínica.</p>
+                </div>
+                <div class="feat-card">
+                    <i class="fa-solid fa-hospital-user"></i>
+                    <h3>Red Aliada</h3>
+                    <p>Conexión directa con clínicas en San Miguel, Surco y Lima Centro. Agenda citas y obtén precios preferenciales.</p>
                 </div>
             </div>
-
-            <div class="right-panel">
-                <h3 style="color:white; text-transform:uppercase;">Lanzamiento</h3>
-                <div id="countdown-ui">
-                    <h2 style='color:#fff; font-size:1.8rem; text-shadow:0 0 25px #00d2ff; text-align:center; line-height: 1.3;'>
-                        ¡YA ESTAMOS<br>EN VIVO,<br><span style="color:#00ffaa;">DISFRÚTALO!</span>
-                    </h2>
-                </div>
-                <button class="btn-lanzamiento" id="openModalBtn" style="margin-top:20px;">Únete a la comunidad</button>
-            </div>
-        </div>
+        </main>
     </div>
 
-    <script>
-        const btnOpen = document.getElementById("openModalBtn");
-        btnOpen.addEventListener("click", () => { alert("¡Bienvenido a la comunidad! Pronto recibirás novedades."); });
-    </script>
+    <footer>
+        <p style="font-weight: 800; letter-spacing: 2px;">PETSCANIA &copy; 2026</p>
+        <p class="team-info">Desarrollado por Edwin "Slater" Saldaña & Saldaña Records.</p>
+        <p class="team-info">Partners: Nelker Saldaña | Eduardo Sanchez</p>
+        <div style="margin-top: 20px; opacity: 0.5;">
+            <i class="fa-brands fa-instagram" style="margin: 0 10px; font-size: 1.2rem;"></i>
+            <i class="fa-brands fa-tiktok" style="margin: 0 10px; font-size: 1.2rem;"></i>
+        </div>
+    </footer>
+
 </body>
 </html>
