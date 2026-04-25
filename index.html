@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>PetScanIA 2.0 | Tecnología Veterinaria con IA</title>
+    <title>PetScanIA 2.0 | Salud Veterinaria con Inteligencia Artificial</title>
     <link rel="icon" href="Logo_PetScanIA.png" type="image/png">
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -116,10 +116,9 @@
             margin: 20px 0; font-weight: 800; font-size: 1.3rem;
             box-shadow: 0 0 30px rgba(0, 210, 255, 0.4);
             animation: pulse 2s infinite;
-            text-shadow: 0 2px 10px rgba(0,0,0,0.3);
         }
 
-        @keyframes pulse { 0% { transform: scale(1); opacity: 1; } 50% { transform: scale(1.05); opacity: 0.9; } 100% { transform: scale(1); opacity: 1; } }
+        @keyframes pulse { 0% { transform: scale(1); } 50% { transform: scale(1.05); } 100% { transform: scale(1); } }
 
         /* --- FEATURES GRID --- */
         .features-grid {
@@ -131,14 +130,8 @@
             background: var(--glass);
             padding: 25px; border-radius: 20px;
             border: 1px solid rgba(0, 210, 255, 0.1);
-            transition: 0.3s;
             backdrop-filter: blur(10px);
-        }
-
-        .feat-card:hover {
-            border-color: var(--cyan);
-            background: rgba(0, 210, 255, 0.08);
-            transform: translateY(-8px);
+            text-align: center;
         }
 
         .feat-card i { font-size: 2.2rem; color: var(--cyan); margin-bottom: 12px; }
@@ -153,14 +146,13 @@
             text-align: center; border-top: 1px solid rgba(255,255,255,0.05);
         }
 
-        .team-info { font-size: 0.9rem; color: #888; margin: 5px 0; font-family: 'Inter', sans-serif; }
+        .copyright { font-size: 0.9rem; color: #888; font-family: 'Inter', sans-serif; letter-spacing: 1px; }
 
         /* --- RESPONSIVE --- */
         @media (max-width: 768px) {
             h1 { font-size: 2.6rem; }
             .download-box { grid-template-columns: 1fr; gap: 12px; }
             .main-content { margin-top: 20px; }
-            .badge-live { font-size: 1.1rem; }
         }
     </style>
 </head>
@@ -174,17 +166,17 @@
                 <a href="https://github.com/SleyterSV/PetScanIA-Landing/releases/download/v2.0/PetScanIA.apk" class="btn-main btn-android">
                     <i class="fa-brands fa-android"></i>
                     INSTALAR ANDROID
-                    <span>v2.0 Stable (APK)</span>
+                    <span>Versión 2.0 (APK)</span>
                 </a>
 
                 <a href="./app/" class="btn-main btn-apple">
                     <i class="fa-brands fa-apple"></i>
                     ABRIR EN IPHONE
-                    <span>Acceso Directo Web</span>
+                    <span>Acceso Web App</span>
                 </a>
             </div>
             <p style="color: var(--green); font-size: 0.85rem; margin-top: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px;">
-                <i class="fa-solid fa-shield-check"></i> Descarga Segura y Verificada
+                <i class="fa-solid fa-shield-check"></i> Distribución Oficial Segura
             </p>
         </header>
 
@@ -192,40 +184,39 @@
             <img src="Logo_PetScanIA.png" alt="PetScanIA 2.0" class="logo-main">
             <h1>PETSCANIA 2.0</h1>
             
-            <div class="badge-live">¡YA ESTAMOS EN VIVO!</div>
+            <div class="badge-live">LANZAMIENTO GLOBAL</div>
             
             <p style="font-family: 'Inter', sans-serif; max-width: 650px; color: #cbd5e1; line-height: 1.6; font-size: 1.05rem;">
-                La plataforma de salud veterinaria más avanzada del Perú. 
-                Diagnóstico con IA, atención 24/7 y la red de clínicas más grande del país.
+                Liderando la transformación digital en salud animal. 
+                Tecnología de diagnóstico preventivo y soporte veterinario especializado en la palma de tu mano.
             </p>
 
             <div class="features-grid">
                 <div class="feat-card">
                     <i class="fa-solid fa-microscope"></i>
-                    <h3>Escáner Médico IA</h3>
-                    <p>Detecta afecciones cutáneas y anomalías visibles con una foto. Tecnología de visión computacional avanzada.</p>
+                    <h3>Diagnóstico Visual</h3>
+                    <p>Identificación preliminar de afecciones mediante análisis de imagen con redes neuronales de alta precisión.</p>
                 </div>
                 <div class="feat-card">
                     <i class="fa-solid fa-comment-medical" style="color: var(--purple);"></i>
-                    <h3 style="color: var(--purple);">VetIA Asistente</h3>
-                    <p>Chatbot inteligente 24/7. Triaje inmediato, primeros auxilios y orientación veterinaria al instante.</p>
+                    <h3 style="color: var(--purple);">VetIA 24/7</h3>
+                    <p>Soporte de triaje inteligente disponible en todo momento para orientación inmediata y primeros auxilios.</p>
                 </div>
                 <div class="feat-card">
                     <i class="fa-solid fa-hospital-user"></i>
-                    <h3>Red Aliada</h3>
-                    <p>Encuentra clínicas en San Miguel, Surco y Lima Centro. Precios exclusivos y atención preferencial.</p>
+                    <h3>Gestión Médica</h3>
+                    <p>Acceso a red de clínicas certificadas, historial médico unificado y agendamiento prioritario.</p>
                 </div>
             </div>
         </main>
     </div>
 
     <footer>
-        <p style="font-weight: 800; letter-spacing: 3px; color: var(--cyan); margin-bottom: 15px;">PETSCANIA 2026</p>
-        <p class="team-info">Desarrollado por Edwin "Slater" Saldaña & Saldaña Records.</p>
-        <p class="team-info">Co-Founders: Nelker Saldaña | Eduardo Sanchez Roldán</p>
+        <p style="font-weight: 800; letter-spacing: 3px; color: var(--cyan); margin-bottom: 10px;">PETSCANIA TECHNOLOGY</p>
+        <p class="copyright">&copy; 2026 Todos los derechos reservados.</p>
         <div style="margin-top: 25px; opacity: 0.6;">
-            <i class="fa-brands fa-instagram" style="margin: 0 15px; font-size: 1.5rem; cursor: pointer;"></i>
-            <i class="fa-brands fa-tiktok" style="margin: 0 15px; font-size: 1.5rem; cursor: pointer;"></i>
+            <i class="fa-brands fa-instagram" style="margin: 0 15px; font-size: 1.5rem;"></i>
+            <i class="fa-brands fa-tiktok" style="margin: 0 15px; font-size: 1.5rem;"></i>
         </div>
     </footer>
 
