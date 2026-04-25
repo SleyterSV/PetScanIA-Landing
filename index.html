@@ -16,7 +16,7 @@
             --purple: #9b59b6;
             --green: #00ffaa;
             --dark: #050505;
-            --glass: rgba(13, 18, 30, 0.7);
+            --glass: rgba(13, 18, 30, 0.8);
         }
 
         * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
@@ -29,7 +29,6 @@
             scroll-behavior: smooth;
         }
 
-        /* --- BACKGROUND --- */
         .hero-container {
             position: relative;
             min-height: 100vh;
@@ -43,7 +42,7 @@
 
         .overlay {
             position: absolute; top: 0; left: 0; right: 0; bottom: 0;
-            background: radial-gradient(circle at center, rgba(0,0,0,0.2) 0%, rgba(0,0,0,0.9) 100%);
+            background: radial-gradient(circle at center, rgba(0,0,0,0.3) 0%, rgba(0,0,0,0.95) 100%);
             z-index: 1;
         }
 
@@ -51,22 +50,22 @@
         .cta-header {
             position: relative; z-index: 50;
             width: 100%; max-width: 600px;
-            margin-top: 20px; text-align: center;
+            margin-top: 10px; text-align: center;
         }
 
         .download-box {
             display: grid; grid-template-columns: 1fr 1fr; gap: 15px;
             background: var(--glass);
-            padding: 20px; border-radius: 24px;
+            padding: 15px; border-radius: 24px;
             border: 1px solid rgba(255,255,255,0.1);
-            backdrop-filter: blur(15px);
-            box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+            backdrop-filter: blur(20px);
+            box-shadow: 0 20px 50px rgba(0,0,0,0.6);
         }
 
         .btn-main {
             display: flex; flex-direction: column; align-items: center;
-            justify-content: center; gap: 8px;
-            padding: 15px; border-radius: 16px;
+            justify-content: center; gap: 6px;
+            padding: 18px 10px; border-radius: 18px;
             text-decoration: none; font-weight: 800;
             transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
             text-transform: uppercase; letter-spacing: 1px;
@@ -76,88 +75,92 @@
             background: var(--green); color: #000;
             box-shadow: 0 0 20px rgba(0, 255, 170, 0.3);
         }
-        .btn-android:hover { transform: scale(1.05); box-shadow: 0 0 40px rgba(0, 255, 170, 0.6); }
+        .btn-android:hover { transform: scale(1.03); box-shadow: 0 0 40px rgba(0, 255, 170, 0.6); }
 
         .btn-apple {
             background: rgba(255, 255, 255, 0.1); color: #fff;
-            border: 1px solid #fff;
+            border: 1px solid rgba(255,255,255,0.3);
         }
-        .btn-apple:hover { background: rgba(255, 255, 255, 0.2); transform: scale(1.05); }
+        .btn-apple:hover { background: rgba(255, 255, 255, 0.2); transform: scale(1.03); }
 
         .btn-main i { font-size: 1.8rem; }
-        .btn-main span { font-size: 0.8rem; opacity: 0.9; }
+        .btn-main span { font-size: 0.75rem; opacity: 0.8; font-weight: 600; }
 
         /* --- HERO CONTENT --- */
         .main-content {
             position: relative; z-index: 10;
             width: 100%; max-width: 1000px;
             display: flex; flex-direction: column; align-items: center;
-            text-align: center; margin-top: 40px;
+            text-align: center; margin-top: 30px;
         }
 
         .logo-main {
-            width: 110px; margin-bottom: 20px;
+            width: 100px; margin-bottom: 15px;
             filter: drop-shadow(0 0 30px var(--cyan));
             animation: float 4s ease-in-out infinite;
         }
 
-        @keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-15px); } }
+        @keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-12px); } }
 
         h1 {
-            font-size: 3.5rem; margin: 0; line-height: 0.9;
+            font-size: 3.2rem; margin: 0; line-height: 1;
             background: linear-gradient(to right, #fff, var(--cyan), var(--purple));
             -webkit-background-clip: text; background-clip: text; color: transparent;
             text-transform: uppercase; font-weight: 900;
+            letter-spacing: -1px;
         }
 
         .badge-live {
             background: linear-gradient(90deg, var(--cyan), var(--purple));
-            padding: 8px 20px; border-radius: 50px;
-            margin: 25px 0; font-weight: 800; font-size: 1.2rem;
-            box-shadow: 0 0 30px rgba(0, 210, 255, 0.5);
+            padding: 10px 30px; border-radius: 50px;
+            margin: 20px 0; font-weight: 800; font-size: 1.3rem;
+            box-shadow: 0 0 30px rgba(0, 210, 255, 0.4);
             animation: pulse 2s infinite;
+            text-shadow: 0 2px 10px rgba(0,0,0,0.3);
         }
 
-        @keyframes pulse { 0% { transform: scale(1); } 50% { transform: scale(1.05); } 100% { transform: scale(1); } }
+        @keyframes pulse { 0% { transform: scale(1); opacity: 1; } 50% { transform: scale(1.05); opacity: 0.9; } 100% { transform: scale(1); opacity: 1; } }
 
         /* --- FEATURES GRID --- */
         .features-grid {
-            display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 20px; width: 100%; margin: 40px 0;
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px; width: 100%; margin: 30px 0;
         }
 
         .feat-card {
             background: var(--glass);
-            padding: 30px; border-radius: 20px;
+            padding: 25px; border-radius: 20px;
             border: 1px solid rgba(0, 210, 255, 0.1);
             transition: 0.3s;
+            backdrop-filter: blur(10px);
         }
 
         .feat-card:hover {
             border-color: var(--cyan);
-            background: rgba(0, 210, 255, 0.05);
-            transform: translateY(-10px);
+            background: rgba(0, 210, 255, 0.08);
+            transform: translateY(-8px);
         }
 
-        .feat-card i { font-size: 2.5rem; color: var(--cyan); margin-bottom: 15px; }
-        .feat-card h3 { font-size: 1.5rem; margin: 10px 0; color: #fff; }
-        .feat-card p { font-family: 'Inter', sans-serif; font-size: 0.95rem; color: #aaa; line-height: 1.6; }
+        .feat-card i { font-size: 2.2rem; color: var(--cyan); margin-bottom: 12px; }
+        .feat-card h3 { font-size: 1.4rem; margin: 10px 0; color: #fff; font-weight: 700; }
+        .feat-card p { font-family: 'Inter', sans-serif; font-size: 0.95rem; color: #cbd5e1; line-height: 1.5; margin: 0; }
 
         /* --- FOOTER --- */
         footer {
             position: relative; z-index: 10;
-            width: 100%; padding: 40px 20px;
-            background: rgba(0,0,0,0.8);
+            width: 100%; padding: 50px 20px;
+            background: rgba(0,0,0,0.9);
             text-align: center; border-top: 1px solid rgba(255,255,255,0.05);
         }
 
-        .team-info { font-size: 0.9rem; color: #666; margin-top: 10px; }
+        .team-info { font-size: 0.9rem; color: #888; margin: 5px 0; font-family: 'Inter', sans-serif; }
 
         /* --- RESPONSIVE --- */
         @media (max-width: 768px) {
-            h1 { font-size: 2.8rem; }
-            .download-box { grid-template-columns: 1fr; }
+            h1 { font-size: 2.6rem; }
+            .download-box { grid-template-columns: 1fr; gap: 12px; }
             .main-content { margin-top: 20px; }
+            .badge-live { font-size: 1.1rem; }
         }
     </style>
 </head>
@@ -171,16 +174,17 @@
                 <a href="https://github.com/SleyterSV/PetScanIA-Landing/releases/download/v2.0/PetScanIA.apk" class="btn-main btn-android">
                     <i class="fa-brands fa-android"></i>
                     INSTALAR ANDROID
-                    <span>v2.0 Stable (APK)</span>
+                    <span>PetScanIA v2.0 (APK)</span>
                 </a>
+
                 <a href="/app/" class="btn-main btn-apple">
                     <i class="fa-brands fa-apple"></i>
                     ABRIR EN IPHONE
                     <span>Acceso Directo Web</span>
                 </a>
             </div>
-            <p style="color: var(--green); font-size: 0.8rem; margin-top: 15px; font-weight: 700;">
-                <i class="fa-solid fa-shield-halved"></i> Verificado y libre de virus
+            <p style="color: var(--green); font-size: 0.85rem; margin-top: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px;">
+                <i class="fa-solid fa-shield-check"></i> Descarga Segura y Verificada
             </p>
         </header>
 
@@ -190,38 +194,38 @@
             
             <div class="badge-live">¡YA ESTAMOS EN VIVO!</div>
             
-            <p style="font-family: 'Inter', sans-serif; max-width: 600px; color: #ccc; line-height: 1.6;">
+            <p style="font-family: 'Inter', sans-serif; max-width: 650px; color: #cbd5e1; line-height: 1.6; font-size: 1.05rem;">
                 La plataforma de salud veterinaria más avanzada del Perú. 
-                Diagnóstico con IA, atención 24/7 y la red de clínicas más grande.
+                Diagnóstico con IA, atención 24/7 y la red de clínicas más grande del país.
             </p>
 
             <div class="features-grid">
                 <div class="feat-card">
                     <i class="fa-solid fa-microscope"></i>
                     <h3>Escáner Médico IA</h3>
-                    <p>Detecta afecciones cutáneas y síntomas visibles solo con una fotografía. Precisión respaldada por redes neuronales.</p>
+                    <p>Detecta afecciones cutáneas y anomalías visibles con una foto. Tecnología de visión computacional avanzada.</p>
                 </div>
                 <div class="feat-card">
                     <i class="fa-solid fa-comment-medical" style="color: var(--purple);"></i>
                     <h3 style="color: var(--purple);">VetIA Asistente</h3>
-                    <p>Nuestro chatbot inteligente disponible 24/7 para triaje inmediato y primeros auxilios antes de llegar a la clínica.</p>
+                    <p>Chatbot inteligente 24/7. Triaje inmediato, primeros auxilios y orientación veterinaria al instante.</p>
                 </div>
                 <div class="feat-card">
                     <i class="fa-solid fa-hospital-user"></i>
                     <h3>Red Aliada</h3>
-                    <p>Conexión directa con clínicas en San Miguel, Surco y Lima Centro. Agenda citas y obtén precios preferenciales.</p>
+                    <p>Encuentra clínicas en San Miguel, Surco y Lima Centro. Precios exclusivos y atención preferencial.</p>
                 </div>
             </div>
         </main>
     </div>
 
     <footer>
-        <p style="font-weight: 800; letter-spacing: 2px;">PETSCANIA &copy; 2026</p>
+        <p style="font-weight: 800; letter-spacing: 3px; color: var(--cyan); margin-bottom: 15px;">PETSCANIA 2026</p>
         <p class="team-info">Desarrollado por Edwin "Slater" Saldaña & Saldaña Records.</p>
-        <p class="team-info">Partners: Nelker Saldaña | Eduardo Sanchez</p>
-        <div style="margin-top: 20px; opacity: 0.5;">
-            <i class="fa-brands fa-instagram" style="margin: 0 10px; font-size: 1.2rem;"></i>
-            <i class="fa-brands fa-tiktok" style="margin: 0 10px; font-size: 1.2rem;"></i>
+        <p class="team-info">Co-Founders: Nelker Saldaña | Eduardo Sanchez Roldán</p>
+        <div style="margin-top: 25px; opacity: 0.6;">
+            <i class="fa-brands fa-instagram" style="margin: 0 15px; font-size: 1.5rem; cursor: pointer;"></i>
+            <i class="fa-brands fa-tiktok" style="margin: 0 15px; font-size: 1.5rem; cursor: pointer;"></i>
         </div>
     </footer>
 
