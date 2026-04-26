@@ -1,11 +1,11 @@
 {
-    "name": "petscania",
-    "short_name": "petscania",
+    "name": "PetScanIA",
+    "short_name": "PetScanIA",
     "start_url": ".",
     "display": "standalone",
-    "background_color": "#0175C2",
-    "theme_color": "#0175C2",
-    "description": "A new Flutter project.",
+    "background_color": "#F5FBFF",
+    "theme_color": "#2854A6",
+    "description": "PetScanIA, cuidado veterinario amable y tecnologico.",
     "orientation": "portrait-primary",
     "prefer_related_applications": false,
     "icons": [
