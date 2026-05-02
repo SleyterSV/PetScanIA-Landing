@@ -1,0 +1,53 @@
+name: petscania
+description: "A new Flutter project."
+publish_to: 'none'
+
+version: 1.0.0+1
+
+environment:
+  sdk: ^3.8.1
+
+dependencies:
+  flutter:
+    sdk: flutter
+  flutter_localizations:
+    sdk: flutter
+
+  cupertino_icons: ^1.0.8
+  http: ^1.6.0
+  record: ^6.1.2
+  path_provider: ^2.1.5
+  permission_handler: ^12.0.1
+  table_calendar: ^3.2.0
+  intl: ^0.20.2
+  image_picker: ^1.2.1
+  google_generative_ai: ^0.4.7
+  supabase_flutter: ^2.12.0
+  video_player: ^2.10.1
+  video_player_win: ^3.2.2
+  google_mlkit_image_labeling: ^0.14.2
+  google_maps_flutter: ^2.14.2
+  flutter_map: ^7.0.2
+  latlong2: ^0.9.1
+  geolocator: ^14.0.2
+  pdf: ^3.11.3
+  printing: ^5.14.2
+  url_launcher: ^6.3.2
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^5.0.0
+
+flutter:
+  uses-material-design: true
+
+  # Registro de imágenes y assets
+  assets:
+    - assets/images/Fondo_PetScanIA.png
+    - assets/images/Logo_PetScanIA.png
+    - assets/images/Logo_PetScanIA_mark.png
+    - assets/images/Fondo_Principal.png
+    - assets/images/PetScanIA_PDF.png
+    - assets/images/Logo_VetIA.png
+    - assets/videos/perro_video.mp4

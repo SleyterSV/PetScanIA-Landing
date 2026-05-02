@@ -1,0 +1,35 @@
+{
+    "name": "PetScanIA",
+    "short_name": "PetScanIA",
+    "start_url": ".",
+    "display": "standalone",
+    "background_color": "#F5FBFF",
+    "theme_color": "#2854A6",
+    "description": "PetScanIA, cuidado veterinario amable y tecnologico.",
+    "orientation": "portrait-primary",
+    "prefer_related_applications": false,
+    "icons": [
+        {
+            "src": "icons/Icon-192.png",
+            "sizes": "192x192",
+            "type": "image/png"
+        },
+        {
+            "src": "icons/Icon-512.png",
+            "sizes": "512x512",
+            "type": "image/png"
+        },
+        {
+            "src": "icons/Icon-maskable-192.png",
+            "sizes": "192x192",
+            "type": "image/png",
+            "purpose": "maskable"
+        },
+        {
+            "src": "icons/Icon-maskable-512.png",
+            "sizes": "512x512",
+            "type": "image/png",
+            "purpose": "maskable"
+        }
+    ]
+}
