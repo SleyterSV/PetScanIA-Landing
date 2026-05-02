@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>PetScanIA 2.0 | Salud Veterinaria con Inteligencia Artificial</title>
+    <link rel="icon" href="Logo_PetScanIA.png" type="image/png">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@500;600;700;800&family=Inter:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        :root {
+            --cyan: #00d2ff;
+            --purple: #9b59b6;
+            --green: #00ffaa;
+            --dark: #050505;
+            --glass: rgba(13, 18, 30, 0.8);
+        }
+
+        * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+        
+        body, html {
+            margin: 0; padding: 0;
+            width: 100%; font-family: 'Rajdhani', sans-serif;
+            background-color: var(--dark);
+            color: white; overflow-x: hidden;
+            scroll-behavior: smooth;
+        }
+
+        .hero-container {
+            position: relative;
+            min-height: 100vh;
+            background-image: url('Fondo_PetScanIA.png'); 
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            display: flex; flex-direction: column; align-items: center;
+            padding: 20px;
+        }
+
+        .overlay {
+            position: absolute; top: 0; left: 0; right: 0; bottom: 0;
+            background: radial-gradient(circle at center, rgba(0,0,0,0.3) 0%, rgba(0,0,0,0.95) 100%);
+            z-index: 1;
+        }
+
+        /* --- HEADER & CTAs ACTUALIZADO --- */
+        .cta-header {
+            position: relative; z-index: 50;
+            width: 100%; max-width: 400px; /* Reducido para un solo botón */
+            margin-top: 10px; text-align: center;
+        }
+
+        .download-box {
+            display: flex; /* Cambiado de grid a flex para centrar */
+            justify-content: center;
+            background: var(--glass);
+            padding: 15px; border-radius: 24px;
+            border: 1px solid rgba(255,255,255,0.1);
+            backdrop-filter: blur(20px);
+            box-shadow: 0 20px 50px rgba(0,0,0,0.6);
+        }
+
+        .btn-main {
+            display: flex; flex-direction: column; align-items: center;
+            justify-content: center; gap: 6px;
+            padding: 18px 30px; border-radius: 18px;
+            text-decoration: none; font-weight: 800;
+            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            text-transform: uppercase; letter-spacing: 1px;
+            width: 100%; /* El botón ocupa el ancho del contenedor */
+        }
+
+        .btn-web-trial {
+            background: linear-gradient(135deg, var(--cyan), var(--purple));
+            color: #fff;
+            box-shadow: 0 0 20px rgba(0, 210, 255, 0.3);
+        }
+        .btn-web-trial:hover { 
+            transform: scale(1.05); 
+            box-shadow: 0 0 40px rgba(155, 89, 182, 0.5); 
+        }
+
+        .btn-main i { font-size: 1.8rem; }
+        .btn-main span { font-size: 0.75rem; opacity: 0.9; font-weight: 600; }
+
+        /* --- HERO CONTENT --- */
+        .main-content {
+            position: relative; z-index: 10;
+            width: 100%; max-width: 1000px;
+            display: flex; flex-direction: column; align-items: center;
+            text-align: center; margin-top: 30px;
+        }
+
+        .logo-main {
+            width: 100px; margin-bottom: 15px;
+            filter: drop-shadow(0 0 30px var(--cyan));
+            animation: float 4s ease-in-out infinite;
+        }
+
+        @keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-12px); } }
+
+        h1 {
+            font-size: 3.2rem; margin: 0; line-height: 1;
+            background: linear-gradient(to right, #fff, var(--cyan), var(--purple));
+            -webkit-background-clip: text; background-clip: text; color: transparent;
+            text-transform: uppercase; font-weight: 900;
+            letter-spacing: -1px;
+        }
+
+        .badge-live {
+            background: linear-gradient(90deg, var(--cyan), var(--purple));
+            padding: 10px 30px; border-radius: 50px;
+            margin: 20px 0; font-weight: 800; font-size: 1.3rem;
+            box-shadow: 0 0 30px rgba(0, 210, 255, 0.4);
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse { 0% { transform: scale(1); } 50% { transform: scale(1.05); } 100% { transform: scale(1); } }
+
+        /* --- FEATURES GRID --- */
+        .features-grid {
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px; width: 100%; margin: 30px 0;
+        }
+
+        .feat-card {
+            background: var(--glass);
+            padding: 25px; border-radius: 20px;
+            border: 1px solid rgba(0, 210, 255, 0.1);
+            backdrop-filter: blur(10px);
+            text-align: center;
+        }
+
+        .feat-card i { font-size: 2.2rem; color: var(--cyan); margin-bottom: 12px; }
+        .feat-card h3 { font-size: 1.4rem; margin: 10px 0; color: #fff; font-weight: 700; }
+        .feat-card p { font-family: 'Inter', sans-serif; font-size: 0.95rem; color: #cbd5e1; line-height: 1.5; margin: 0; }
+
+        /* --- FOOTER --- */
+        footer {
+            position: relative; z-index: 10;
+            width: 100%; padding: 50px 20px;
+            background: rgba(0,0,0,0.9);
+            text-align: center; border-top: 1px solid rgba(255,255,255,0.05);
+        }
+
+        .copyright { font-size: 0.9rem; color: #888; font-family: 'Inter', sans-serif; letter-spacing: 1px; }
+
+        @media (max-width: 768px) {
+            h1 { font-size: 2.6rem; }
+            .cta-header { max-width: 90%; }
+            .main-content { margin-top: 20px; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="hero-container">
+        <div class="overlay"></div>
+
+        <header class="cta-header">
+            <div class="download-box">
+                <a href="./app/" class="btn-main btn-web-trial">
+                    <i class="fa-solid fa-globe"></i>
+                    PRUEBA EN LA WEB
+                    <span>Acceso Directo App</span>
+                </a>
+            </div>
+            <p style="color: var(--green); font-size: 0.85rem; margin-top: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px;">
+                <i class="fa-solid fa-shield-check"></i> Distribución Oficial Segura
+            </p>
+        </header>
+
+        <main class="main-content">
+            <img src="Logo_PetScanIA.png" alt="PetScanIA 2.0" class="logo-main">
+            <h1>PETSCANIA 2.0</h1>
+            
+            <div class="badge-live">LANZAMIENTO GLOBAL</div>
+            
+            <p style="font-family: 'Inter', sans-serif; max-width: 650px; color: #cbd5e1; line-height: 1.6; font-size: 1.05rem;">
+                Liderando la transformación digital en salud animal. 
+                Tecnología de diagnóstico preventivo y soporte veterinario especializado en la palma de tu mano.
+            </p>
+
+            <div class="features-grid">
+                <div class="feat-card">
+                    <i class="fa-solid fa-microscope"></i>
+                    <h3>Diagnóstico Visual</h3>
+                    <p>Identificación preliminar de afecciones mediante análisis de imagen con redes neuronales de alta precisión.</p>
+                </div>
+                <div class="feat-card">
+                    <i class="fa-solid fa-comment-medical" style="color: var(--purple);"></i>
+                    <h3 style="color: var(--purple);">VetIA 24/7</h3>
+                    <p>Soporte de triaje inteligente disponible en todo momento para orientación inmediata y primeros auxilios.</p>
+                </div>
+                <div class="feat-card">
+                    <i class="fa-solid fa-hospital-user"></i>
+                    <h3>Gestión Médica</h3>
+                    <p>Acceso a red de clínicas certificadas, historial médico unificado y agendamiento prioritario.</p>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <footer>
+        <p style="font-weight: 800; letter-spacing: 3px; color: var(--cyan); margin-bottom: 10px;">PETSCANIA TECHNOLOGY</p>
+        <p class="copyright">&copy; 2026 Todos los derechos reservados.</p>
+        <div style="margin-top: 25px; opacity: 0.6;">
+            <i class="fa-brands fa-instagram" style="margin: 0 15px; font-size: 1.5rem;"></i>
+            <i class="fa-brands fa-tiktok" style="margin: 0 15px; font-size: 1.5rem;"></i>
+        </div>
+    </footer>
+
+</body>
+</html>
