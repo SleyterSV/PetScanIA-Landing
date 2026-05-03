@@ -1,16 +1,32 @@
-# petscania
+# PetScanIA
 
-A new Flutter project.
+Aplicacion Flutter para cuidado de mascotas, comunidad local, adopciones,
+campanas gratuitas, historial medico familiar y acceso rapido por WhatsApp.
 
-## Getting Started
+## Actualizacion principal
 
-This project is a starting point for a Flutter application.
+- Login por numero telefonico con flujo de codigo por WhatsApp.
+- Seccion "Adopta y ayuda" para adopciones, mascotas perdidas y encontradas.
+- Campanas gratuitas visibles desde el inicio.
+- Historial medico familiar con permisos compartidos.
+- Roles de usuario: familia/cliente, veterinario, refugio/rescatista y admin.
+- Esquema Supabase base en `supabase/petscania_family_roles_schema.sql`.
 
-A few resources to get you started if this is your first Flutter project:
+## Ejecutar
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+```powershell
+flutter pub get
+flutter run -d chrome --web-hostname 127.0.0.1 --web-port 53731
+```
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+Abrir:
+
+```text
+http://127.0.0.1:53731
+```
+
+## Supabase
+
+Antes de usar familia, roles, campanas e historial medico en produccion,
+ejecutar el SQL de `supabase/petscania_family_roles_schema.sql` en el panel de
+Supabase.
